@@ -1,686 +1,1014 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Style Gallery</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Analyst Portfolio Styles</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000;
-            color: #fff;
-        }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #000;
+        color: #fff;
+      }
 
-        .selector {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+      .selector {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-        .selector-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+      .selector-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-        .style-btn {
-            padding: 10px 20px;
-            background: #1a1a1a;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 14px;
-        }
+      .style-btn {
+        padding: 8px 16px;
+        background: #1a1a1a;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 13px;
+      }
 
-        .style-btn:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
+      .style-btn:hover {
+        background: #333;
+      }
 
-        .style-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-color: transparent;
-        }
+      .style-btn.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-color: transparent;
+      }
 
-        .page {
-            display: none;
-            min-height: 100vh;
-            padding-top: 80px;
-        }
+      .page {
+        display: none;
+        min-height: 100vh;
+        padding-top: 60px;
+      }
 
-        .page.active {
-            display: block;
-        }
+      .page.active {
+        display: block;
+      }
 
-        /* GLASSMORPHISM STYLE */
-        .glass-page {
-            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
-            position: relative;
-            overflow: hidden;
-        }
+      /* MODERN DARK STYLE */
+      .modern-dark {
+        background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+      }
 
-        .glass-page::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
+      .modern-nav {
+        padding: 30px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+      }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 20px 40px;
-            margin: 40px auto;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .modern-logo {
+        font-size: 24px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .glass-hero {
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
-        }
+      .modern-links {
+        display: flex;
+        gap: 40px;
+      }
 
-        .glass-hero h1 {
-            font-size: 72px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
+      .modern-links a {
+        color: #fff;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+      }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 400px;
-            margin: 20px;
-            display: inline-block;
-        }
+      .modern-links a:hover {
+        opacity: 1;
+      }
 
-        /* BRUTALISM STYLE */
-        .brutal-page {
-            background: #fff;
-            color: #000;
-        }
+      .modern-hero {
+        padding: 100px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        .brutal-header {
-            background: #ff0;
-            border: 8px solid #000;
-            padding: 30px;
-            box-shadow: 12px 12px 0 #000;
-            margin: 40px;
-        }
+      .modern-hero h1 {
+        font-size: 64px;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .brutal-header h1 {
-            font-size: 64px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-        }
+      .modern-hero p {
+        font-size: 24px;
+        color: #888;
+        margin-bottom: 40px;
+      }
 
-        .brutal-box {
-            background: #0ff;
-            border: 8px solid #000;
-            padding: 40px;
-            margin: 40px;
-            box-shadow: 12px 12px 0 #f0f;
-            display: inline-block;
-        }
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        padding: 0 60px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        .brutal-btn {
-            background: #f00;
-            color: #fff;
-            border: 6px solid #000;
-            padding: 20px 40px;
-            font-size: 24px;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 8px 8px 0 #000;
-            margin: 20px;
-        }
+      .project-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 30px;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
 
-        /* MINIMALIST STYLE */
-        .minimal-page {
-            background: #fff;
-            color: #000;
-        }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+      }
 
-        .minimal-nav {
-            padding: 40px 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e0e0e0;
-        }
+      .project-card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #667eea;
+      }
 
-        .minimal-hero {
-            padding: 150px 80px;
-            max-width: 800px;
-        }
+      .project-card p {
+        color: #aaa;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
 
-        .minimal-hero h1 {
-            font-size: 96px;
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 40px;
-            letter-spacing: -3px;
-        }
+      .tags {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
 
-        .minimal-hero p {
-            font-size: 20px;
-            color: #666;
-            line-height: 1.8;
-            font-weight: 300;
-        }
+      .tag {
+        padding: 5px 12px;
+        background: rgba(102, 126, 234, 0.2);
+        color: #667eea;
+        border-radius: 15px;
+        font-size: 12px;
+      }
 
-        .minimal-line {
-            width: 60px;
-            height: 2px;
-            background: #000;
-            margin: 40px 0;
-        }
+      /* CLEAN MINIMAL STYLE */
+      .clean-minimal {
+        background: #fff;
+        color: #000;
+      }
 
-        /* GRADIENT STYLE */
-        .gradient-page {
-            background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59, #12c2e9);
-            background-size: 400% 400%;
-            animation: gradientFlow 15s ease infinite;
-        }
+      .minimal-header {
+        padding: 40px 80px;
+        border-bottom: 1px solid #e0e0e0;
+      }
 
-        @keyframes gradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+      .minimal-header h1 {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
 
-        .gradient-hero {
-            text-align: center;
-            padding: 150px 20px;
-        }
+      .minimal-hero {
+        padding: 120px 80px 80px;
+        max-width: 900px;
+      }
 
-        .gradient-hero h1 {
-            font-size: 84px;
-            font-weight: 900;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin-bottom: 30px;
-        }
+      .minimal-hero h2 {
+        font-size: 72px;
+        font-weight: 300;
+        line-height: 1.1;
+        margin-bottom: 30px;
+        letter-spacing: -2px;
+      }
 
-        .gradient-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(20px);
-            border-radius: 40px;
-            padding: 60px;
-            margin: 30px;
-            display: inline-block;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
+      .minimal-hero p {
+        font-size: 20px;
+        color: #666;
+        line-height: 1.8;
+        max-width: 600px;
+      }
 
-        /* NEOMORPH STYLE */
-        .neomorph-page {
-            background: #e0e5ec;
-            color: #333;
-        }
+      .minimal-section {
+        padding: 60px 80px;
+        border-top: 1px solid #e0e0e0;
+      }
 
-        .neomorph-container {
-            padding: 100px 50px;
-            text-align: center;
-        }
+      .minimal-section h3 {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #999;
+        margin-bottom: 40px;
+      }
 
-        .neomorph-card {
-            background: #e0e5ec;
-            border-radius: 30px;
-            padding: 50px;
-            margin: 30px;
-            display: inline-block;
-            box-shadow: 15px 15px 30px #a3b1c6, -15px -15px 30px #ffffff;
-            max-width: 400px;
-        }
+      .minimal-project {
+        margin-bottom: 60px;
+        max-width: 800px;
+      }
 
-        .neomorph-btn {
-            background: #e0e5ec;
-            border: none;
-            border-radius: 50px;
-            padding: 20px 50px;
-            font-size: 18px;
-            box-shadow: 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff;
-            cursor: pointer;
-            margin: 20px;
-        }
+      .minimal-project h4 {
+        font-size: 32px;
+        font-weight: 400;
+        margin-bottom: 15px;
+      }
 
-        .neomorph-btn:active {
-            box-shadow: inset 8px 8px 16px #a3b1c6, inset -8px -8px 16px #ffffff;
-        }
+      .minimal-project p {
+        color: #666;
+        line-height: 1.8;
+        font-size: 16px;
+      }
 
-        /* DARK TECH STYLE */
-        .tech-page {
-            background: #000;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
-        }
+      /* DATA DASHBOARD STYLE */
+      .dashboard-style {
+        background: #0a0e27;
+        color: #fff;
+      }
 
-        .tech-container {
-            padding: 100px 50px;
-        }
+      .dash-header {
+        background: #131a35;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #1e2749;
+      }
 
-        .tech-header {
-            border: 2px solid #0f0;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-        }
+      .dash-logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: #4fc3f7;
+      }
 
-        .tech-header h1 {
-            font-size: 48px;
-            text-shadow: 0 0 10px #0f0;
-        }
+      .dash-nav {
+        display: flex;
+        gap: 30px;
+        font-size: 14px;
+      }
 
-        .tech-box {
-            border: 1px solid #0f0;
-            padding: 30px;
-            margin: 20px 0;
-            background: rgba(0, 255, 0, 0.05);
-        }
+      .dash-container {
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
 
-        .tech-text {
-            line-height: 1.8;
-            text-shadow: 0 0 5px #0f0;
-        }
+      .dash-hero {
+        background: linear-gradient(135deg, #1e2749 0%, #2d3561 100%);
+        border-radius: 15px;
+        padding: 60px;
+        margin-bottom: 40px;
+        border: 1px solid #2d3561;
+      }
 
-        /* RETROWAVE STYLE */
-        .retro-page {
-            background: linear-gradient(180deg, #2e1753 0%, #1a0933 100%);
-            position: relative;
-            overflow: hidden;
-        }
+      .dash-hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #4fc3f7;
+      }
 
-        .retro-page::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 300px;
-            background: linear-gradient(to bottom, transparent, #ff00ff);
-            opacity: 0.3;
-        }
+      .dash-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+      }
 
-        .retro-hero {
-            text-align: center;
-            padding: 150px 20px;
-            position: relative;
-        }
+      .stat-card {
+        background: #131a35;
+        border: 1px solid #1e2749;
+        border-radius: 10px;
+        padding: 25px;
+      }
 
-        .retro-hero h1 {
-            font-size: 96px;
-            font-weight: 900;
-            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px #ff00ff, 0 0 80px #00ffff;
-            animation: glow 2s ease-in-out infinite;
-        }
+      .stat-card h4 {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
 
-        @keyframes glow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
+      .stat-card p {
+        font-size: 32px;
+        font-weight: 700;
+        color: #4fc3f7;
+      }
 
-        .retro-grid {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 20px,
-                rgba(255, 0, 255, 0.3) 20px,
-                rgba(255, 0, 255, 0.3) 22px
-            );
-            transform: perspective(500px) rotateX(60deg);
-        }
+      .dash-projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 25px;
+      }
 
-        /* SWISS STYLE */
-        .swiss-page {
-            background: #fff;
-            color: #000;
-        }
+      .dash-card {
+        background: #131a35;
+        border: 1px solid #1e2749;
+        border-radius: 10px;
+        padding: 30px;
+        transition: border-color 0.3s;
+      }
 
-        .swiss-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            min-height: 100vh;
-        }
+      .dash-card:hover {
+        border-color: #4fc3f7;
+      }
 
-        .swiss-red {
-            background: #ff0000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 200px;
-            font-weight: 900;
-            color: #fff;
-        }
+      /* GRADIENT MODERN STYLE */
+      .gradient-modern {
+        background: #000;
+        color: #fff;
+      }
 
-        .swiss-content {
-            padding: 100px;
-        }
+      .gradient-nav {
+        padding: 30px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .swiss-content h1 {
-            font-size: 72px;
-            font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 60px;
-        }
+      .gradient-hero-section {
+        padding: 100px 60px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        text-align: center;
+      }
 
-        .swiss-content p {
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 500px;
-        }
+      .gradient-hero-section h1 {
+        font-size: 72px;
+        margin-bottom: 20px;
+      }
 
-        /* ORGANIC STYLE */
-        .organic-page {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
+      .gradient-hero-section p {
+        font-size: 24px;
+        opacity: 0.9;
+      }
 
-        .blob1, .blob2, .blob3 {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: blobMove 8s ease-in-out infinite;
-        }
+      .gradient-content {
+        padding: 80px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        .blob1 {
-            width: 400px;
-            height: 400px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
+      .gradient-project {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.1),
+          rgba(118, 75, 162, 0.1)
+        );
+        border-radius: 25px;
+        padding: 40px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(102, 126, 234, 0.3);
+      }
 
-        .blob2 {
-            width: 300px;
-            height: 300px;
-            top: 50%;
-            right: 10%;
-            animation-delay: 2s;
-        }
+      /* TECH MODERN STYLE */
+      .tech-modern {
+        background: #0d1117;
+        color: #c9d1d9;
+        font-family: "Courier New", monospace;
+      }
 
-        .blob3 {
-            width: 350px;
-            height: 350px;
-            bottom: 10%;
-            left: 50%;
-            animation-delay: 4s;
-        }
+      .tech-header {
+        background: #161b22;
+        border-bottom: 1px solid #30363d;
+        padding: 20px 40px;
+      }
 
-        @keyframes blobMove {
-            0%, 100% {
-                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-                transform: translate(50px, 50px) rotate(90deg);
-            }
-            50% {
-                border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%;
-                transform: translate(0, 100px) rotate(180deg);
-            }
-            75% {
-                border-radius: 70% 30% 40% 60% / 30% 50% 50% 70%;
-                transform: translate(-50px, 50px) rotate(270deg);
-            }
-        }
+      .tech-header h1 {
+        font-size: 20px;
+        color: #58a6ff;
+      }
 
-        .organic-hero {
-            text-align: center;
-            padding: 200px 20px;
-            position: relative;
-            z-index: 1;
-        }
+      .tech-main {
+        padding: 60px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        .organic-hero h1 {
-            font-size: 84px;
-            font-weight: 800;
-        }
+      .tech-main h2 {
+        font-size: 48px;
+        color: #58a6ff;
+        margin-bottom: 20px;
+      }
 
-        .organic-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border-radius: 50px;
-            padding: 50px;
-            margin: 30px;
-            display: inline-block;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        }
+      .tech-project-card {
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        padding: 30px;
+        margin-bottom: 20px;
+      }
+
+      .tech-project-card:hover {
+        border-color: #58a6ff;
+      }
+
+      /* PROFESSIONAL CORPORATE */
+      .corporate {
+        background: #f5f5f5;
+        color: #333;
+      }
+
+      .corp-header {
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 25px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .corp-hero {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: #fff;
+        padding: 100px 60px;
+        text-align: center;
+      }
+
+      .corp-hero h1 {
+        font-size: 56px;
+        margin-bottom: 20px;
+      }
+
+      .corp-content {
+        padding: 80px 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .corp-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 35px;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="selector">
-        <div class="selector-content">
-            <button class="style-btn active" onclick="showStyle('glass')">Glassmorphism</button>
-            <button class="style-btn" onclick="showStyle('brutal')">Brutalism</button>
-            <button class="style-btn" onclick="showStyle('minimal')">Minimalist</button>
-            <button class="style-btn" onclick="showStyle('gradient')">Gradient Mesh</button>
-            <button class="style-btn" onclick="showStyle('neomorph')">Neumorphism</button>
-            <button class="style-btn" onclick="showStyle('tech')">Dark Tech</button>
-            <button class="style-btn" onclick="showStyle('retro')">Retro Wave</button>
-            <button class="style-btn" onclick="showStyle('swiss')">Swiss Design</button>
-            <button class="style-btn" onclick="showStyle('organic')">Organic</button>
-        </div>
+      <div class="selector-content">
+        <button class="style-btn active" onclick="showStyle('modern-dark')">
+          Modern Dark
+        </button>
+        <button class="style-btn" onclick="showStyle('clean-minimal')">
+          Clean Minimal
+        </button>
+        <button class="style-btn" onclick="showStyle('dashboard')">
+          Data Dashboard
+        </button>
+        <button class="style-btn" onclick="showStyle('gradient')">
+          Gradient Modern
+        </button>
+        <button class="style-btn" onclick="showStyle('tech')">
+          Tech/GitHub
+        </button>
+        <button class="style-btn" onclick="showStyle('corporate')">
+          Professional Corporate
+        </button>
+      </div>
     </div>
 
-    <!-- GLASSMORPHISM -->
-    <div class="page glass-page active" id="glass">
-        <div class="glass-nav">
-            <div style="font-size: 24px; font-weight: 700;">GlassUI</div>
-            <div style="display: flex; gap: 30px;">
-                <span>Home</span>
-                <span>About</span>
-                <span>Contact</span>
-            </div>
+    <!-- MODERN DARK -->
+    <div class="page modern-dark active" id="modern-dark">
+      <nav class="modern-nav">
+        <div class="modern-logo">Alex Chen</div>
+        <div class="modern-links">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div class="glass-hero">
-            <h1>Beautiful Transparency</h1>
-            <p style="font-size: 24px; opacity: 0.9; margin-bottom: 60px;">Experience the future of modern design</p>
-            <div class="glass-card">
-                <h3 style="font-size: 28px; margin-bottom: 15px;">Featured Content</h3>
-                <p style="opacity: 0.9; line-height: 1.6;">Frosted glass effects with layered transparency create depth and visual hierarchy in modern interfaces.</p>
-            </div>
-            <div class="glass-card">
-                <h3 style="font-size: 28px; margin-bottom: 15px;">Premium Quality</h3>
-                <p style="opacity: 0.9; line-height: 1.6;">Blurred backgrounds and subtle borders give your content an ethereal floating appearance.</p>
-            </div>
+      </nav>
+
+      <div class="modern-hero">
+        <h1>Data Analyst</h1>
+        <p>
+          Transforming complex data into actionable insights through advanced
+          analytics and visualization
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Customer Segmentation Analysis</h3>
+          <p>
+            Applied K-means clustering to segment 50K+ customers, resulting in
+            23% increase in targeted marketing ROI
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Tableau</span>
+          </div>
         </div>
+
+        <div class="project-card">
+          <h3>Sales Forecasting Model</h3>
+          <p>
+            Built ARIMA time-series model achieving 94% accuracy for quarterly
+            revenue predictions
+          </p>
+          <div class="tags">
+            <span class="tag">R</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Statistics</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3>E-commerce Analytics Dashboard</h3>
+          <p>
+            Designed interactive dashboard tracking 15+ KPIs, reducing report
+            generation time by 80%
+          </p>
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Excel</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <h3>A/B Testing Framework</h3>
+          <p>
+            Established testing methodology for product features, validating
+            decisions with statistical significance
+          </p>
+          <div class="tags">
+            <span class="tag">Hypothesis Testing</span>
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- BRUTALISM -->
-    <div class="page brutal-page" id="brutal">
-        <div class="brutal-header">
-            <h1>BRUTAL DESIGN</h1>
-            <p style="font-size: 24px; font-weight: 700;">RAW. BOLD. UNAPOLOGETIC.</p>
+    <!-- CLEAN MINIMAL -->
+    <div class="page clean-minimal" id="clean-minimal">
+      <div class="minimal-header">
+        <h1>Alex Chen — Data Analyst</h1>
+      </div>
+
+      <div class="minimal-hero">
+        <h2>Making data meaningful</h2>
+        <p>
+          I specialize in extracting insights from complex datasets and
+          presenting them in ways that drive business decisions. With 5+ years
+          of experience across e-commerce, finance, and healthcare sectors.
+        </p>
+      </div>
+
+      <div class="minimal-section">
+        <h3>Selected Work</h3>
+
+        <div class="minimal-project">
+          <h4>Customer Segmentation Analysis</h4>
+          <p>
+            Leveraged unsupervised machine learning to identify distinct
+            customer segments within a 50,000+ user base. Delivered actionable
+            insights that increased targeted marketing ROI by 23% and improved
+            customer retention rates by 18%.
+          </p>
         </div>
-        <div style="padding: 40px;">
-            <div class="brutal-box">
-                <h2 style="font-size: 48px; font-weight: 900; margin-bottom: 20px;">NO RULES</h2>
-                <p style="font-size: 20px; line-height: 1.6;">Forget everything you know about "good design". This is intentionally rough, raw, and in your face.</p>
-            </div>
-            <div class="brutal-box" style="background: #ff0; box-shadow: 12px 12px 0 #0ff;">
-                <h2 style="font-size: 48px; font-weight: 900; margin-bottom: 20px;">CHAOS</h2>
-                <p style="font-size: 20px; line-height: 1.6;">Harsh colors, heavy shadows, and aggressive typography make statements that can't be ignored.</p>
-            </div>
-            <button class="brutal-btn">CLICK ME</button>
-            <button class="brutal-btn" style="background: #0f0;">DO IT NOW</button>
+
+        <div class="minimal-project">
+          <h4>Predictive Sales Forecasting</h4>
+          <p>
+            Developed ARIMA time-series models to forecast quarterly revenue
+            with 94% accuracy. The model identified seasonal patterns and
+            external factors, enabling proactive inventory management and
+            resource allocation.
+          </p>
         </div>
+
+        <div class="minimal-project">
+          <h4>Real-Time Analytics Dashboard</h4>
+          <p>
+            Architected comprehensive Power BI dashboard consolidating data from
+            multiple sources. Automated reporting reduced manual work by 80%,
+            while providing executives with real-time visibility into key
+            performance indicators.
+          </p>
+        </div>
+      </div>
+
+      <div class="minimal-section">
+        <h3>Technical Skills</h3>
+        <div class="minimal-project">
+          <p>
+            <strong>Languages:</strong> Python, R, SQL<br />
+            <strong>Tools:</strong> Tableau, Power BI, Excel, Jupyter<br />
+            <strong>Techniques:</strong> Machine Learning, Statistical Analysis,
+            A/B Testing, Data Visualization
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- MINIMALIST -->
-    <div class="page minimal-page" id="minimal">
-        <div class="minimal-nav">
-            <div style="font-size: 14px; letter-spacing: 2px;">MINIMAL</div>
-            <div style="display: flex; gap: 50px; font-size: 14px; letter-spacing: 1px;">
-                <span>WORK</span>
-                <span>ABOUT</span>
-                <span>CONTACT</span>
+    <!-- DATA DASHBOARD -->
+    <div class="page dashboard-style" id="dashboard">
+      <div class="dash-header">
+        <div class="dash-logo">ALEX CHEN | DATA ANALYST</div>
+        <div class="dash-nav">
+          <span>Dashboard</span>
+          <span>Projects</span>
+          <span>About</span>
+        </div>
+      </div>
+
+      <div class="dash-container">
+        <div class="dash-hero">
+          <h1>Portfolio Analytics Overview</h1>
+          <p style="font-size: 18px; color: #aaa; margin-top: 10px">
+            Turning data into decisions through advanced analytics
+          </p>
+        </div>
+
+        <div class="dash-stats">
+          <div class="stat-card">
+            <h4>Projects Completed</h4>
+            <p>24</p>
+          </div>
+          <div class="stat-card">
+            <h4>Years Experience</h4>
+            <p>5+</p>
+          </div>
+          <div class="stat-card">
+            <h4>Avg ROI Impact</h4>
+            <p>32%</p>
+          </div>
+          <div class="stat-card">
+            <h4>Client Satisfaction</h4>
+            <p>98%</p>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom: 25px; font-size: 24px">Featured Projects</h3>
+
+        <div class="dash-projects">
+          <div class="dash-card">
+            <h3 style="color: #4fc3f7; margin-bottom: 15px">
+              Customer Segmentation
+            </h3>
+            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
+              Applied K-means clustering on 50K+ customer records. Identified 5
+              key segments leading to 23% increase in marketing ROI.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">Tableau</span>
             </div>
+          </div>
+
+          <div class="dash-card">
+            <h3 style="color: #4fc3f7; margin-bottom: 15px">
+              Sales Forecasting Model
+            </h3>
+            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
+              Built time-series ARIMA model with 94% prediction accuracy for
+              quarterly revenue forecasting.
+            </p>
+            <div class="tags">
+              <span class="tag">R</span>
+              <span class="tag">Time Series</span>
+              <span class="tag">Statistics</span>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <h3 style="color: #4fc3f7; margin-bottom: 15px">
+              E-commerce Dashboard
+            </h3>
+            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
+              Interactive Power BI dashboard tracking 15+ KPIs, reducing manual
+              reporting by 80%.
+            </p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">DAX</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <h3 style="color: #4fc3f7; margin-bottom: 15px">
+              A/B Testing Framework
+            </h3>
+            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
+              Established statistical testing methodology validating product
+              decisions with confidence.
+            </p>
+            <div class="tags">
+              <span class="tag">Hypothesis Testing</span>
+              <span class="tag">Python</span>
+              <span class="tag">Statistical Analysis</span>
+            </div>
+          </div>
         </div>
-        <div class="minimal-hero">
-            <h1>Less is More</h1>
-            <div class="minimal-line"></div>
-            <p>In a world of noise and clutter, minimalism offers clarity. Every element serves a purpose. Every space breathes intention. The result is timeless elegance that never goes out of style.</p>
-            <p style="margin-top: 40px;">Clean typography, generous whitespace, and a focus on content create experiences that feel effortless and refined.</p>
-        </div>
+      </div>
     </div>
 
-    <!-- GRADIENT MESH -->
-    <div class="page gradient-page" id="gradient">
-        <div class="gradient-hero">
-            <h1>Vibrant Flow</h1>
-            <p style="font-size: 28px; margin-bottom: 60px;">Colors that dance and blend</p>
-            <div class="gradient-card">
-                <h3 style="font-size: 32px; margin-bottom: 20px;">Dynamic Energy</h3>
-                <p style="font-size: 18px; line-height: 1.6;">Flowing gradients create movement and depth, bringing your content to life with mesmerizing color transitions.</p>
-            </div>
-            <div class="gradient-card">
-                <h3 style="font-size: 32px; margin-bottom: 20px;">Modern Appeal</h3>
-                <p style="font-size: 18px; line-height: 1.6;">Vibrant hues merge seamlessly to create eye-catching visuals that capture attention and imagination.</p>
-            </div>
+    <!-- GRADIENT MODERN -->
+    <div class="page gradient-modern" id="gradient">
+      <nav class="gradient-nav">
+        <div style="font-size: 24px; font-weight: 700">Alex Chen</div>
+        <div style="display: flex; gap: 40px">
+          <a href="#" style="color: #fff; text-decoration: none">Work</a>
+          <a href="#" style="color: #fff; text-decoration: none">About</a>
+          <a href="#" style="color: #fff; text-decoration: none">Contact</a>
         </div>
+      </nav>
+
+      <div class="gradient-hero-section">
+        <h1>Data Analyst & Storyteller</h1>
+        <p>Transforming numbers into narratives that drive business growth</p>
+      </div>
+
+      <div class="gradient-content">
+        <h2 style="font-size: 42px; margin-bottom: 50px">Featured Projects</h2>
+
+        <div class="gradient-project">
+          <h3 style="font-size: 32px; margin-bottom: 15px; color: #667eea">
+            Customer Segmentation Analysis
+          </h3>
+          <p
+            style="
+              font-size: 18px;
+              line-height: 1.8;
+              color: #ccc;
+              margin-bottom: 20px;
+            "
+          >
+            Implemented advanced clustering algorithms to segment 50,000+
+            customers into actionable groups. This analysis drove a 23% increase
+            in marketing ROI and improved customer lifetime value by 18%.
+          </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="gradient-project">
+          <h3 style="font-size: 32px; margin-bottom: 15px; color: #667eea">
+            Predictive Revenue Forecasting
+          </h3>
+          <p
+            style="
+              font-size: 18px;
+              line-height: 1.8;
+              color: #ccc;
+              margin-bottom: 20px;
+            "
+          >
+            Developed sophisticated time-series models achieving 94% accuracy in
+            quarterly revenue predictions. Enabled proactive resource allocation
+            and strategic planning initiatives.
+          </p>
+          <div class="tags">
+            <span class="tag">R</span>
+            <span class="tag">ARIMA</span>
+            <span class="tag">Statistics</span>
+            <span class="tag">Forecasting</span>
+          </div>
+        </div>
+
+        <div class="gradient-project">
+          <h3 style="font-size: 32px; margin-bottom: 15px; color: #667eea">
+            Interactive Analytics Dashboard
+          </h3>
+          <p
+            style="
+              font-size: 18px;
+              line-height: 1.8;
+              color: #ccc;
+              margin-bottom: 20px;
+            "
+          >
+            Built comprehensive Power BI dashboard consolidating multiple data
+            sources. Automated reporting processes and provided executives with
+            real-time insights into business performance.
+          </p>
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">DAX</span>
+            <span class="tag">Data Modeling</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- NEUMORPHISM -->
-    <div class="page neomorph-page" id="neomorph">
-        <div class="neomorph-container">
-            <h1 style="font-size: 64px; margin-bottom: 30px;">Soft UI</h1>
-            <p style="font-size: 20px; color: #666; margin-bottom: 60px;">Elements that feel touchable and real</p>
-            <div class="neomorph-card">
-                <h3 style="font-size: 28px; margin-bottom: 20px;">Tactile Design</h3>
-                <p style="line-height: 1.8; color: #666;">Subtle shadows create the illusion of depth, making UI elements appear to emerge from the background.</p>
-            </div>
-            <div class="neomorph-card">
-                <h3 style="font-size: 28px; margin-bottom: 20px;">Elegant Depth</h3>
-                <p style="line-height: 1.8; color: #666;">Soft, extruded surfaces give your interface a premium, refined aesthetic that feels modern yet familiar.</p>
-            </div>
-            <div>
-                <button class="neomorph-btn">Press Me</button>
-                <button class="neomorph-btn">Click Here</button>
-            </div>
+    <!-- TECH/GITHUB STYLE -->
+    <div class="page tech-modern" id="tech">
+      <div class="tech-header">
+        <h1>alex-chen / data-portfolio</h1>
+      </div>
+
+      <div class="tech-main">
+        <h2>$ whoami</h2>
+        <p style="font-size: 18px; margin: 20px 0 60px; color: #8b949e">
+          Data Analyst | Python, SQL, R | 5+ years experience transforming data
+          into insights
+        </p>
+
+        <h3 style="font-size: 24px; margin-bottom: 25px; color: #58a6ff">
+          ## Featured Projects
+        </h3>
+
+        <div class="tech-project-card">
+          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
+            customer-segmentation-analysis
+          </h4>
+          <p style="color: #8b949e; margin-bottom: 15px">
+            K-means clustering on 50K+ customer dataset. 23% ROI increase in
+            targeted marketing campaigns.
+          </p>
+          <p style="font-size: 14px; color: #8b949e">
+            <strong>Stack:</strong> Python · Scikit-learn · Pandas · Tableau
+          </p>
         </div>
+
+        <div class="tech-project-card">
+          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
+            sales-forecasting-model
+          </h4>
+          <p style="color: #8b949e; margin-bottom: 15px">
+            Time-series ARIMA model with 94% accuracy for quarterly revenue
+            predictions.
+          </p>
+          <p style="font-size: 14px; color: #8b949e">
+            <strong>Stack:</strong> R · Time Series Analysis · Statistical
+            Modeling
+          </p>
+        </div>
+
+        <div class="tech-project-card">
+          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
+            ecommerce-analytics-dashboard
+          </h4>
+          <p style="color: #8b949e; margin-bottom: 15px">
+            Real-time dashboard tracking 15+ KPIs. Reduced manual reporting by
+            80%.
+          </p>
+          <p style="font-size: 14px; color: #8b949e">
+            <strong>Stack:</strong> Power BI · SQL · DAX · Data Modeling
+          </p>
+        </div>
+
+        <div class="tech-project-card">
+          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
+            ab-testing-framework
+          </h4>
+          <p style="color: #8b949e; margin-bottom: 15px">
+            Statistical testing methodology for product feature validation and
+            optimization.
+          </p>
+          <p style="font-size: 14px; color: #8b949e">
+            <strong>Stack:</strong> Python · Hypothesis Testing · A/B Testing ·
+            Statistics
+          </p>
+        </div>
+
+        <h3 style="font-size: 24px; margin: 50px 0 25px; color: #58a6ff">
+          ## Technical Skills
+        </h3>
+        <div class="tech-project-card">
+          <p style="color: #c9d1d9; line-height: 2">
+            <strong style="color: #58a6ff">Languages:</strong> Python, R, SQL<br />
+            <strong style="color: #58a6ff">Visualization:</strong> Tableau,
+            Power BI, Matplotlib, Seaborn<br />
+            <strong style="color: #58a6ff">ML/Stats:</strong> Scikit-learn,
+            Statistical Analysis, A/B Testing<br />
+            <strong style="color: #58a6ff">Tools:</strong> Jupyter, Git, Excel,
+            Google Analytics
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- DARK TECH -->
-    <div class="page tech-page" id="tech">
-        <div class="tech-container">
-            <div class="tech-header">
-                <h1>&gt; SYSTEM.INIT()</h1>
-                <p style="margin-top: 15px;">&gt; Loading interface...</p>
-            </div>
-            <div class="tech-box">
-                <p class="tech-text">&gt; TERMINAL_MODE: ACTIVE</p>
-                <p class="tech-text">&gt; CONNECTION: ESTABLISHED</p>
-                <p class="tech-text">&gt; STATUS: ONLINE</p>
-            </div>
-            <div class="tech-box">
-                <h2 style="font-size: 36px; margin-bottom: 20px;">&gt; CYBERPUNK_AESTHETIC</h2>
-                <p class="tech-text" style="line-height: 2;">Monospace fonts, glowing green text, and terminal-inspired interfaces evoke the raw power of command-line computing. This is where hackers and developers feel at home.</p>
-            </div>
-            <div class="tech-box">
-                <p class="tech-text">&gt; ENTER_COMMAND: _</p>
-            </div>
+    <!-- PROFESSIONAL CORPORATE -->
+    <div class="page corporate" id="corporate">
+      <div class="corp-header">
+        <div style="font-size: 24px; font-weight: 700; color: #1e3a8a">
+          Alex Chen
         </div>
-    </div>
+        <div style="display: flex; gap: 40px; font-weight: 500">
+          <a href="#" style="color: #333; text-decoration: none">Home</a>
+          <a href="#" style="color: #333; text-decoration: none">Projects</a>
+          <a href="#" style="color: #333; text-decoration: none">About</a>
+          <a href="#" style="color: #333; text-decoration: none">Contact</a>
+        </div>
+      </div>
 
-    <!-- RETROWAVE -->
-    <div class="page retro-page" id="retro">
-        <div class="retro-hero">
-            <h1>RETROWAVE</h1>
-            <p style="font-size: 32px; color: #00ffff; text-shadow: 0 0 20px #00ffff; margin-top: 30px;">Back to the Future</p>
-            <div style="margin-top: 80px;">
-                <div style="background: rgba(255, 0, 255, 0.2); border: 2px solid #ff00ff; padding: 40px; display: inline-block; box-shadow: 0 0 30px rgba(255, 0, 255, 0.5); max-width: 600px;">
-                    <h3 style="font-size: 36px; color: #ff00ff; margin-bottom: 20px;">80s Nostalgia</h3>
-                    <p style="color: #00ffff; font-size: 20px; line-height: 1.8;">Neon colors, grid patterns, and synthwave aesthetics transport you to a retro-futuristic world where the past meets tomorrow.</p>
-                </div>
-            </div>
-        </div>
-        <div class="retro-grid"></div>
-    </div>
+      <div class="corp-hero">
+        <h1>Data Analyst</h1>
+        <p style="font-size: 22px; margin-top: 15px; opacity: 0.95">
+          Delivering data-driven solutions that accelerate business growth
+        </p>
+      </div>
 
-    <!-- SWISS DESIGN -->
-    <div class="page swiss-page" id="swiss">
-        <div class="swiss-grid">
-            <div class="swiss-red">A</div>
-            <div class="swiss-content">
-                <h1>SWISS<br>DESIGN</h1>
-                <p>The International Typographic Style emerged in Switzerland in the 1950s. It emphasizes cleanliness, readability, and objectivity through the use of grid-based layouts, sans-serif typography, and a focus on hierarchy.</p>
-                <p style="margin-top: 30px;">Bold color blocks, asymmetric compositions, and mathematical precision create timeless designs that remain influential today. Form follows function in perfect harmony.</p>
-                <div style="margin-top: 60px; display: flex; gap: 20px;">
-                    <div style="width: 100px; height: 100px; background: #000;"></div>
-                    <div style="width: 100px; height: 100px; background: #0000ff;"></div>
-                    <div style="width: 100px; height: 100px; background: #ffff00;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="corp-content">
+        <h2 style="font-size: 36px; margin-bottom: 20px; color: #1e3a8a">
+          Professional Experience
+        </h2>
+        <p
+          style="
+            font-size: 18px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 60px;
+          "
+        >
+          With over 5 years of experience in data analytics, I specialize in
+          transforming complex datasets into actionable insights that drive
+        </p>
 
-    <!-- ORGANIC -->
-    <div class="page organic-page" id="organic">
-        <div class="blob1"></div>
-        <div class="blob2"></div>
-        <div class="blob3"></div>
-        <div class="organic-hero">
-            <h1>Organic Flow</h1>
-            <p style="font-size: 28px; margin-top: 20px; margin-bottom: 60px;">Natural shapes in motion</p>
-            <div class="organic-card">
-                <h3 style="font-size: 32px; margin-bottom: 20px;">Fluid Forms</h3>
-                <p style="font-size: 18px; line-height: 1.8;">Inspired by nature, organic designs use soft curves and flowing animations to create harmonious, calming experiences.</p>
-            </div>
-            <div class="organic-card">
-                <h3 style="font-size: 32px; margin-bottom: 20px;">Living Design</h3>
-                <p style="font-size: 18px; line-height: 1.8;">Morphing blobs and gentle movements bring interfaces to life, making digital spaces feel warm and human.</p>
-            </div>
+        <h2 style="font-size: 36px; margin-bottom: 20px; color: #1e3a8a">
+          Selected Projects
+        </h2>
+        <div class="corp-card">
+          <h3 style="font-size: 24px; margin-bottom: 10px; color: #1e3a8a">
+            Customer Segmentation Analysis
+          </h3>
+          <p style="font-size: 16px; color: #555; line-height: 1.6">
+            Implemented K-means clustering on 50K+ customers to identify
+            actionable segments, increasing targeted marketing ROI by 23%.
+          </p>
         </div>
+
+        <div class="corp-card">
+          <h3 style="font-size: 24px; margin-bottom: 10px; color: #1e3a8a">
+            Predictive Sales Forecasting
+          </h3>
+          <p style="font-size: 16px; color: #555; line-height: 1.6">
+            Built ARIMA models forecasting quarterly sales with 94% accuracy,
+            enabling better inventory planning and resource allocation.
+          </p>
+        </div>
+
+        <div class="corp-card">
+          <h3 style="font-size: 24px; margin-bottom: 10px; color: #1e3a8a">
+            E-commerce Analytics Dashboard
+          </h3>
+          <p style="font-size: 16px; color: #555; line-height: 1.6">
+            Designed an interactive dashboard tracking 15+ KPIs, automating
+            reports and reducing manual effort by 80%.
+          </p>
+        </div>
+
+        <h2 style="font-size: 36px; margin-bottom: 20px; color: #1e3a8a">
+          Technical Skills
+        </h2>
+        <div class="corp-card">
+          <p style="font-size: 16px; color: #555; line-height: 1.8">
+            <strong>Languages:</strong> Python, R, SQL<br />
+            <strong>Visualization:</strong> Tableau, Power BI, Excel<br />
+            <strong>Techniques:</strong> Machine Learning, Statistical Analysis,
+            A/B Testing, Forecasting<br />
+            <strong>Tools:</strong> Jupyter, Git, ERP Systems
+          </p>
+        </div>
+      </div>
     </div>
 
     <script>
-        function showStyle(style) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
-            
-            document.getElementById(style).classList.add('active');
-            event.target.classList.add('active');
-        }
+      function showStyle(styleId) {
+        const pages = document.querySelectorAll(".page");
+        const buttons = document.querySelectorAll(".style-btn");
+
+        pages.forEach((page) => {
+          page.classList.remove("active");
+        });
+        buttons.forEach((btn) => btn.classList.remove("active"));
+
+        document.getElementById(styleId).classList.add("active");
+        event.currentTarget.classList.add("active");
+      }
     </script>
-</body>
+  </body>
 </html>
