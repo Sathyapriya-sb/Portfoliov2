@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Style Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+
+        .selector {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .selector-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .style-btn {
+            padding: 10px 20px;
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .style-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .style-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* GLASSMORPHISM STYLE */
+        .glass-page {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px 40px;
+            margin: 40px auto;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .glass-hero {
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .glass-hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 400px;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        /* BRUTALISM STYLE */
+        .brutal-page {
+            background: #fff;
+            color: #000;
+        }
+
+        .brutal-header {
+            background: #ff0;
+            border: 8px solid #000;
+            padding: 30px;
+            box-shadow: 12px 12px 0 #000;
+            margin: 40px;
+        }
+
+        .brutal-header h1 {
+            font-size: 64px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .brutal-box {
+            background: #0ff;
+            border: 8px solid #000;
+            padding: 40px;
+            margin: 40px;
+            box-shadow: 12px 12px 0 #f0f;
+            display: inline-block;
+        }
+
+        .brutal-btn {
+            background: #f00;
+            color: #fff;
+            border: 6px solid #000;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 8px 8px 0 #000;
+            margin: 20px;
+        }
+
+        /* MINIMALIST STYLE */
+        .minimal-page {
+            background: #fff;
+            color: #000;
+        }
+
+        .minimal-nav {
+            padding: 40px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .minimal-hero {
+            padding: 150px 80px;
+            max-width: 800px;
+        }
+
+        .minimal-hero h1 {
+            font-size: 96px;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            letter-spacing: -3px;
+        }
+
+        .minimal-hero p {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .minimal-line {
+            width: 60px;
+            height: 2px;
+            background: #000;
+            margin: 40px 0;
+        }
+
+        /* GRADIENT STYLE */
+        .gradient-page {
+            background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59, #12c2e9);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .gradient-hero {
+            text-align: center;
+            padding: 150px 20px;
+        }
+
+        .gradient-hero h1 {
+            font-size: 84px;
+            font-weight: 900;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .gradient-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 60px;
+            margin: 30px;
+            display: inline-block;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* NEOMORPH STYLE */
+        .neomorph-page {
+            background: #e0e5ec;
+            color: #333;
+        }
+
+        .neomorph-container {
+            padding: 100px 50px;
+            text-align: center;
+        }
+
+        .neomorph-card {
+            background: #e0e5ec;
+            border-radius: 30px;
+            padding: 50px;
+            margin: 30px;
+            display: inline-block;
+            box-shadow: 15px 15px 30px #a3b1c6, -15px -15px 30px #ffffff;
+            max-width: 400px;
+        }
+
+        .neomorph-btn {
+            background: #e0e5ec;
+            border: none;
+            border-radius: 50px;
+            padding: 20px 50px;
+            font-size: 18px;
+            box-shadow: 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .neomorph-btn:active {
+            box-shadow: inset 8px 8px 16px #a3b1c6, inset -8px -8px 16px #ffffff;
+        }
+
+        /* DARK TECH STYLE */
+        .tech-page {
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .tech-container {
+            padding: 100px 50px;
+        }
+
+        .tech-header {
+            border: 2px solid #0f0;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .tech-header h1 {
+            font-size: 48px;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        .tech-box {
+            border: 1px solid #0f0;
+            padding: 30px;
+            margin: 20px 0;
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .tech-text {
+            line-height: 1.8;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        /* RETROWAVE STYLE */
+        .retro-page {
+            background: linear-gradient(180deg, #2e1753 0%, #1a0933 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .retro-page::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: linear-gradient(to bottom, transparent, #ff00ff);
+            opacity: 0.3;
+        }
+
+        .retro-hero {
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+        }
+
+        .retro-hero h1 {
+            font-size: 96px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px #ff00ff, 0 0 80px #00ffff;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .retro-grid {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 0, 255, 0.3) 20px,
+                rgba(255, 0, 255, 0.3) 22px
+            );
+            transform: perspective(500px) rotateX(60deg);
+        }
+
+        /* SWISS STYLE */
+        .swiss-page {
+            background: #fff;
+            color: #000;
+        }
+
+        .swiss-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            min-height: 100vh;
+        }
+
+        .swiss-red {
+            background: #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 200px;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        .swiss-content {
+            padding: 100px;
+        }
+
+        .swiss-content h1 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 60px;
+        }
+
+        .swiss-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        /* ORGANIC STYLE */
+        .organic-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blob1, .blob2, .blob3 {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: blobMove 8s ease-in-out infinite;
+        }
+
+        .blob1 {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .blob3 {
+            width: 350px;
+            height: 350px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        @keyframes blobMove {
+            0%, 100% {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+                transform: translate(50px, 50px) rotate(90deg);
+            }
+            50% {
+                border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%;
+                transform: translate(0, 100px) rotate(180deg);
+            }
+            75% {
+                border-radius: 70% 30% 40% 60% / 30% 50% 50% 70%;
+                transform: translate(-50px, 50px) rotate(270deg);
+            }
+        }
+
+        .organic-hero {
+            text-align: center;
+            padding: 200px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .organic-hero h1 {
+            font-size: 84px;
+            font-weight: 800;
+        }
+
+        .organic-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 50px;
+            margin: 30px;
+            display: inline-block;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="selector">
+        <div class="selector-content">
+            <button class="style-btn active" onclick="showStyle('glass')">Glassmorphism</button>
+            <button class="style-btn" onclick="showStyle('brutal')">Brutalism</button>
+            <button class="style-btn" onclick="showStyle('minimal')">Minimalist</button>
+            <button class="style-btn" onclick="showStyle('gradient')">Gradient Mesh</button>
+            <button class="style-btn" onclick="showStyle('neomorph')">Neumorphism</button>
+            <button class="style-btn" onclick="showStyle('tech')">Dark Tech</button>
+            <button class="style-btn" onclick="showStyle('retro')">Retro Wave</button>
+            <button class="style-btn" onclick="showStyle('swiss')">Swiss Design</button>
+            <button class="style-btn" onclick="showStyle('organic')">Organic</button>
+        </div>
+    </div>
+
+    <!-- GLASSMORPHISM -->
+    <div class="page glass-page active" id="glass">
+        <div class="glass-nav">
+            <div style="font-size: 24px; font-weight: 700;">GlassUI</div>
+            <div style="display: flex; gap: 30px;">
+                <span>Home</span>
+                <span>About</span>
+                <span>Contact</span>
+            </div>
+        </div>
+        <div class="glass-hero">
+            <h1>Beautiful Transparency</h1>
+            <p style="font-size: 24px; opacity: 0.9; margin-bottom: 60px;">Experience the future of modern design</p>
+            <div class="glass-card">
+                <h3 style="font-size: 28px; margin-bottom: 15px;">Featured Content</h3>
+                <p style="opacity: 0.9; line-height: 1.6;">Frosted glass effects with layered transparency create depth and visual hierarchy in modern interfaces.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="font-size: 28px; margin-bottom: 15px;">Premium Quality</h3>
+                <p style="opacity: 0.9; line-height: 1.6;">Blurred backgrounds and subtle borders give your content an ethereal floating appearance.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BRUTALISM -->
+    <div class="page brutal-page" id="brutal">
+        <div class="brutal-header">
+            <h1>BRUTAL DESIGN</h1>
+            <p style="font-size: 24px; font-weight: 700;">RAW. BOLD. UNAPOLOGETIC.</p>
+        </div>
+        <div style="padding: 40px;">
+            <div class="brutal-box">
+                <h2 style="font-size: 48px; font-weight: 900; margin-bottom: 20px;">NO RULES</h2>
+                <p style="font-size: 20px; line-height: 1.6;">Forget everything you know about "good design". This is intentionally rough, raw, and in your face.</p>
+            </div>
+            <div class="brutal-box" style="background: #ff0; box-shadow: 12px 12px 0 #0ff;">
+                <h2 style="font-size: 48px; font-weight: 900; margin-bottom: 20px;">CHAOS</h2>
+                <p style="font-size: 20px; line-height: 1.6;">Harsh colors, heavy shadows, and aggressive typography make statements that can't be ignored.</p>
+            </div>
+            <button class="brutal-btn">CLICK ME</button>
+            <button class="brutal-btn" style="background: #0f0;">DO IT NOW</button>
+        </div>
+    </div>
+
+    <!-- MINIMALIST -->
+    <div class="page minimal-page" id="minimal">
+        <div class="minimal-nav">
+            <div style="font-size: 14px; letter-spacing: 2px;">MINIMAL</div>
+            <div style="display: flex; gap: 50px; font-size: 14px; letter-spacing: 1px;">
+                <span>WORK</span>
+                <span>ABOUT</span>
+                <span>CONTACT</span>
+            </div>
+        </div>
+        <div class="minimal-hero">
+            <h1>Less is More</h1>
+            <div class="minimal-line"></div>
+            <p>In a world of noise and clutter, minimalism offers clarity. Every element serves a purpose. Every space breathes intention. The result is timeless elegance that never goes out of style.</p>
+            <p style="margin-top: 40px;">Clean typography, generous whitespace, and a focus on content create experiences that feel effortless and refined.</p>
+        </div>
+    </div>
+
+    <!-- GRADIENT MESH -->
+    <div class="page gradient-page" id="gradient">
+        <div class="gradient-hero">
+            <h1>Vibrant Flow</h1>
+            <p style="font-size: 28px; margin-bottom: 60px;">Colors that dance and blend</p>
+            <div class="gradient-card">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Dynamic Energy</h3>
+                <p style="font-size: 18px; line-height: 1.6;">Flowing gradients create movement and depth, bringing your content to life with mesmerizing color transitions.</p>
+            </div>
+            <div class="gradient-card">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Modern Appeal</h3>
+                <p style="font-size: 18px; line-height: 1.6;">Vibrant hues merge seamlessly to create eye-catching visuals that capture attention and imagination.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEUMORPHISM -->
+    <div class="page neomorph-page" id="neomorph">
+        <div class="neomorph-container">
+            <h1 style="font-size: 64px; margin-bottom: 30px;">Soft UI</h1>
+            <p style="font-size: 20px; color: #666; margin-bottom: 60px;">Elements that feel touchable and real</p>
+            <div class="neomorph-card">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">Tactile Design</h3>
+                <p style="line-height: 1.8; color: #666;">Subtle shadows create the illusion of depth, making UI elements appear to emerge from the background.</p>
+            </div>
+            <div class="neomorph-card">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">Elegant Depth</h3>
+                <p style="line-height: 1.8; color: #666;">Soft, extruded surfaces give your interface a premium, refined aesthetic that feels modern yet familiar.</p>
+            </div>
+            <div>
+                <button class="neomorph-btn">Press Me</button>
+                <button class="neomorph-btn">Click Here</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DARK TECH -->
+    <div class="page tech-page" id="tech">
+        <div class="tech-container">
+            <div class="tech-header">
+                <h1>&gt; SYSTEM.INIT()</h1>
+                <p style="margin-top: 15px;">&gt; Loading interface...</p>
+            </div>
+            <div class="tech-box">
+                <p class="tech-text">&gt; TERMINAL_MODE: ACTIVE</p>
+                <p class="tech-text">&gt; CONNECTION: ESTABLISHED</p>
+                <p class="tech-text">&gt; STATUS: ONLINE</p>
+            </div>
+            <div class="tech-box">
+                <h2 style="font-size: 36px; margin-bottom: 20px;">&gt; CYBERPUNK_AESTHETIC</h2>
+                <p class="tech-text" style="line-height: 2;">Monospace fonts, glowing green text, and terminal-inspired interfaces evoke the raw power of command-line computing. This is where hackers and developers feel at home.</p>
+            </div>
+            <div class="tech-box">
+                <p class="tech-text">&gt; ENTER_COMMAND: _</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RETROWAVE -->
+    <div class="page retro-page" id="retro">
+        <div class="retro-hero">
+            <h1>RETROWAVE</h1>
+            <p style="font-size: 32px; color: #00ffff; text-shadow: 0 0 20px #00ffff; margin-top: 30px;">Back to the Future</p>
+            <div style="margin-top: 80px;">
+                <div style="background: rgba(255, 0, 255, 0.2); border: 2px solid #ff00ff; padding: 40px; display: inline-block; box-shadow: 0 0 30px rgba(255, 0, 255, 0.5); max-width: 600px;">
+                    <h3 style="font-size: 36px; color: #ff00ff; margin-bottom: 20px;">80s Nostalgia</h3>
+                    <p style="color: #00ffff; font-size: 20px; line-height: 1.8;">Neon colors, grid patterns, and synthwave aesthetics transport you to a retro-futuristic world where the past meets tomorrow.</p>
+                </div>
+            </div>
+        </div>
+        <div class="retro-grid"></div>
+    </div>
+
+    <!-- SWISS DESIGN -->
+    <div class="page swiss-page" id="swiss">
+        <div class="swiss-grid">
+            <div class="swiss-red">A</div>
+            <div class="swiss-content">
+                <h1>SWISS<br>DESIGN</h1>
+                <p>The International Typographic Style emerged in Switzerland in the 1950s. It emphasizes cleanliness, readability, and objectivity through the use of grid-based layouts, sans-serif typography, and a focus on hierarchy.</p>
+                <p style="margin-top: 30px;">Bold color blocks, asymmetric compositions, and mathematical precision create timeless designs that remain influential today. Form follows function in perfect harmony.</p>
+                <div style="margin-top: 60px; display: flex; gap: 20px;">
+                    <div style="width: 100px; height: 100px; background: #000;"></div>
+                    <div style="width: 100px; height: 100px; background: #0000ff;"></div>
+                    <div style="width: 100px; height: 100px; background: #ffff00;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORGANIC -->
+    <div class="page organic-page" id="organic">
+        <div class="blob1"></div>
+        <div class="blob2"></div>
+        <div class="blob3"></div>
+        <div class="organic-hero">
+            <h1>Organic Flow</h1>
+            <p style="font-size: 28px; margin-top: 20px; margin-bottom: 60px;">Natural shapes in motion</p>
+            <div class="organic-card">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Fluid Forms</h3>
+                <p style="font-size: 18px; line-height: 1.8;">Inspired by nature, organic designs use soft curves and flowing animations to create harmonious, calming experiences.</p>
+            </div>
+            <div class="organic-card">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Living Design</h3>
+                <p style="font-size: 18px; line-height: 1.8;">Morphing blobs and gentle movements bring interfaces to life, making digital spaces feel warm and human.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showStyle(style) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(style).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
