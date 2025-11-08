@@ -3,1012 +3,159 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Analyst Portfolio Styles</title>
+    <title>Portfolio Style Explorer</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #000;
-        color: #fff;
-      }
-
-      .selector {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 15px;
-        z-index: 1000;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .selector-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .style-btn {
-        padding: 8px 16px;
-        background: #1a1a1a;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 13px;
-      }
-
-      .style-btn:hover {
-        background: #333;
-      }
-
-      .style-btn.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-color: transparent;
-      }
-
-      .page {
-        display: none;
-        min-height: 100vh;
-        padding-top: 60px;
-      }
-
-      .page.active {
-        display: block;
-      }
-
-      /* MODERN DARK STYLE */
-      .modern-dark {
-        background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
-      }
-
-      .modern-nav {
-        padding: 30px 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-      }
-
-      .modern-logo {
-        font-size: 24px;
-        font-weight: 700;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .modern-links {
-        display: flex;
-        gap: 40px;
-      }
-
-      .modern-links a {
-        color: #fff;
-        text-decoration: none;
-        opacity: 0.8;
-        transition: opacity 0.3s;
-      }
-
-      .modern-links a:hover {
-        opacity: 1;
-      }
-
-      .modern-hero {
-        padding: 100px 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .modern-hero h1 {
-        font-size: 64px;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .modern-hero p {
-        font-size: 24px;
-        color: #888;
-        margin-bottom: 40px;
-      }
-
-      .project-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-        padding: 0 60px 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .project-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 30px;
-        transition:
-          transform 0.3s,
-          box-shadow 0.3s;
-      }
-
-      .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-      }
-
-      .project-card h3 {
-        font-size: 24px;
-        margin-bottom: 15px;
-        color: #667eea;
-      }
-
-      .project-card p {
-        color: #aaa;
-        line-height: 1.6;
-        margin-bottom: 20px;
-      }
-
-      .tags {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .tag {
-        padding: 5px 12px;
-        background: rgba(102, 126, 234, 0.2);
-        color: #667eea;
-        border-radius: 15px;
-        font-size: 12px;
-      }
-
-      /* CLEAN MINIMAL STYLE */
-      .clean-minimal {
-        background: #fff;
-        color: #000;
-      }
-
-      .minimal-header {
-        padding: 40px 80px;
-        border-bottom: 1px solid #e0e0e0;
-      }
-
-      .minimal-header h1 {
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: -0.5px;
-      }
-
-      .minimal-hero {
-        padding: 120px 80px 80px;
-        max-width: 900px;
-      }
-
-      .minimal-hero h2 {
-        font-size: 72px;
-        font-weight: 300;
-        line-height: 1.1;
-        margin-bottom: 30px;
-        letter-spacing: -2px;
-      }
-
-      .minimal-hero p {
-        font-size: 20px;
-        color: #666;
-        line-height: 1.8;
-        max-width: 600px;
-      }
-
-      .minimal-section {
-        padding: 60px 80px;
-        border-top: 1px solid #e0e0e0;
-      }
-
-      .minimal-section h3 {
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #999;
-        margin-bottom: 40px;
-      }
-
-      .minimal-project {
-        margin-bottom: 60px;
-        max-width: 800px;
-      }
-
-      .minimal-project h4 {
-        font-size: 32px;
-        font-weight: 400;
-        margin-bottom: 15px;
-      }
-
-      .minimal-project p {
-        color: #666;
-        line-height: 1.8;
-        font-size: 16px;
-      }
-
-      /* DATA DASHBOARD STYLE */
-      .dashboard-style {
-        background: #0a0e27;
-        color: #fff;
-      }
-
-      .dash-header {
-        background: #131a35;
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid #1e2749;
-      }
-
-      .dash-logo {
-        font-size: 20px;
-        font-weight: 700;
-        color: #4fc3f7;
-      }
-
-      .dash-nav {
-        display: flex;
-        gap: 30px;
-        font-size: 14px;
-      }
-
-      .dash-container {
-        padding: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .dash-hero {
-        background: linear-gradient(135deg, #1e2749 0%, #2d3561 100%);
-        border-radius: 15px;
-        padding: 60px;
-        margin-bottom: 40px;
-        border: 1px solid #2d3561;
-      }
-
-      .dash-hero h1 {
-        font-size: 48px;
-        margin-bottom: 20px;
-        color: #4fc3f7;
-      }
-
-      .dash-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-bottom: 40px;
-      }
-
-      .stat-card {
-        background: #131a35;
-        border: 1px solid #1e2749;
-        border-radius: 10px;
-        padding: 25px;
-      }
-
-      .stat-card h4 {
-        font-size: 14px;
-        color: #888;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-      }
-
-      .stat-card p {
-        font-size: 32px;
-        font-weight: 700;
-        color: #4fc3f7;
-      }
-
-      .dash-projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 25px;
-      }
-
-      .dash-card {
-        background: #131a35;
-        border: 1px solid #1e2749;
-        border-radius: 10px;
-        padding: 30px;
-        transition: border-color 0.3s;
-      }
-
-      .dash-card:hover {
-        border-color: #4fc3f7;
-      }
-
-      /* GRADIENT MODERN STYLE */
-      .gradient-modern {
-        background: #000;
-        color: #fff;
-      }
-
-      .gradient-nav {
-        padding: 30px 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .gradient-hero-section {
-        padding: 100px 60px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        text-align: center;
-      }
-
-      .gradient-hero-section h1 {
-        font-size: 72px;
-        margin-bottom: 20px;
-      }
-
-      .gradient-hero-section p {
-        font-size: 24px;
-        opacity: 0.9;
-      }
-
-      .gradient-content {
-        padding: 80px 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .gradient-project {
-        background: linear-gradient(
-          135deg,
-          rgba(102, 126, 234, 0.1),
-          rgba(118, 75, 162, 0.1)
-        );
-        border-radius: 25px;
-        padding: 40px;
-        margin-bottom: 30px;
-        border: 1px solid rgba(102, 126, 234, 0.3);
-      }
-
-      /* TECH MODERN STYLE */
-      .tech-modern {
-        background: #0d1117;
-        color: #c9d1d9;
-        font-family: "Courier New", monospace;
-      }
-
-      .tech-header {
-        background: #161b22;
-        border-bottom: 1px solid #30363d;
-        padding: 20px 40px;
-      }
-
-      .tech-header h1 {
-        font-size: 20px;
-        color: #58a6ff;
-      }
-
-      .tech-main {
-        padding: 60px 40px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .tech-main h2 {
-        font-size: 48px;
-        color: #58a6ff;
-        margin-bottom: 20px;
-      }
-
-      .tech-project-card {
-        background: #161b22;
-        border: 1px solid #30363d;
-        border-radius: 6px;
-        padding: 30px;
-        margin-bottom: 20px;
-      }
-
-      .tech-project-card:hover {
-        border-color: #58a6ff;
-      }
-
-      /* PROFESSIONAL CORPORATE */
-      .corporate {
-        background: #f5f5f5;
-        color: #333;
-      }
-
-      .corp-header {
-        background: #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        padding: 25px 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .corp-hero {
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        color: #fff;
-        padding: 100px 60px;
-        text-align: center;
-      }
-
-      .corp-hero h1 {
-        font-size: 56px;
-        margin-bottom: 20px;
-      }
-
-      .corp-content {
-        padding: 80px 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .corp-card {
-        background: #fff;
-        border-radius: 10px;
-        padding: 35px;
-        margin-bottom: 25px;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        font-family: system-ui, sans-serif;
       }
     </style>
   </head>
-  <body>
-    <div class="selector">
-      <div class="selector-content">
-        <button class="style-btn active" onclick="showStyle('modern-dark')">
-          Modern Dark
-        </button>
-        <button class="style-btn" onclick="showStyle('clean-minimal')">
-          Clean Minimal
-        </button>
-        <button class="style-btn" onclick="showStyle('dashboard')">
-          Data Dashboard
-        </button>
-        <button class="style-btn" onclick="showStyle('gradient')">
-          Gradient Modern
-        </button>
-        <button class="style-btn" onclick="showStyle('tech')">
-          Tech/GitHub
-        </button>
-        <button class="style-btn" onclick="showStyle('corporate')">
-          Professional Corporate
-        </button>
-      </div>
-    </div>
-
-    <!-- MODERN DARK -->
-    <div class="page modern-dark active" id="modern-dark">
-      <nav class="modern-nav">
-        <div class="modern-logo">Alex Chen</div>
-        <div class="modern-links">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-
-      <div class="modern-hero">
-        <h1>Data Analyst</h1>
-        <p>
-          Transforming complex data into actionable insights through advanced
-          analytics and visualization
-        </p>
-      </div>
-
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Customer Segmentation Analysis</h3>
-          <p>
-            Applied K-means clustering to segment 50K+ customers, resulting in
-            23% increase in targeted marketing ROI
-          </p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Tableau</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <h3>Sales Forecasting Model</h3>
-          <p>
-            Built ARIMA time-series model achieving 94% accuracy for quarterly
-            revenue predictions
-          </p>
-          <div class="tags">
-            <span class="tag">R</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Statistics</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <h3>E-commerce Analytics Dashboard</h3>
-          <p>
-            Designed interactive dashboard tracking 15+ KPIs, reducing report
-            generation time by 80%
-          </p>
-          <div class="tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">DAX</span>
-            <span class="tag">Excel</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <h3>A/B Testing Framework</h3>
-          <p>
-            Established testing methodology for product features, validating
-            decisions with statistical significance
-          </p>
-          <div class="tags">
-            <span class="tag">Hypothesis Testing</span>
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CLEAN MINIMAL -->
-    <div class="page clean-minimal" id="clean-minimal">
-      <div class="minimal-header">
-        <h1>Alex Chen — Data Analyst</h1>
-      </div>
-
-      <div class="minimal-hero">
-        <h2>Making data meaningful</h2>
-        <p>
-          I specialize in extracting insights from complex datasets and
-          presenting them in ways that drive business decisions. With 5+ years
-          of experience across e-commerce, finance, and healthcare sectors.
-        </p>
-      </div>
-
-      <div class="minimal-section">
-        <h3>Selected Work</h3>
-
-        <div class="minimal-project">
-          <h4>Customer Segmentation Analysis</h4>
-          <p>
-            Leveraged unsupervised machine learning to identify distinct
-            customer segments within a 50,000+ user base. Delivered actionable
-            insights that increased targeted marketing ROI by 23% and improved
-            customer retention rates by 18%.
-          </p>
-        </div>
-
-        <div class="minimal-project">
-          <h4>Predictive Sales Forecasting</h4>
-          <p>
-            Developed ARIMA time-series models to forecast quarterly revenue
-            with 94% accuracy. The model identified seasonal patterns and
-            external factors, enabling proactive inventory management and
-            resource allocation.
-          </p>
-        </div>
-
-        <div class="minimal-project">
-          <h4>Real-Time Analytics Dashboard</h4>
-          <p>
-            Architected comprehensive Power BI dashboard consolidating data from
-            multiple sources. Automated reporting reduced manual work by 80%,
-            while providing executives with real-time visibility into key
-            performance indicators.
-          </p>
-        </div>
-      </div>
-
-      <div class="minimal-section">
-        <h3>Technical Skills</h3>
-        <div class="minimal-project">
-          <p>
-            <strong>Languages:</strong> Python, R, SQL<br />
-            <strong>Tools:</strong> Tableau, Power BI, Excel, Jupyter<br />
-            <strong>Techniques:</strong> Machine Learning, Statistical Analysis,
-            A/B Testing, Data Visualization
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- DATA DASHBOARD -->
-    <div class="page dashboard-style" id="dashboard">
-      <div class="dash-header">
-        <div class="dash-logo">ALEX CHEN | DATA ANALYST</div>
-        <div class="dash-nav">
-          <span>Dashboard</span>
-          <span>Projects</span>
-          <span>About</span>
-        </div>
-      </div>
-
-      <div class="dash-container">
-        <div class="dash-hero">
-          <h1>Portfolio Analytics Overview</h1>
-          <p style="font-size: 18px; color: #aaa; margin-top: 10px">
-            Turning data into decisions through advanced analytics
-          </p>
-        </div>
-
-        <div class="dash-stats">
-          <div class="stat-card">
-            <h4>Projects Completed</h4>
-            <p>24</p>
-          </div>
-          <div class="stat-card">
-            <h4>Years Experience</h4>
-            <p>5+</p>
-          </div>
-          <div class="stat-card">
-            <h4>Avg ROI Impact</h4>
-            <p>32%</p>
-          </div>
-          <div class="stat-card">
-            <h4>Client Satisfaction</h4>
-            <p>98%</p>
-          </div>
-        </div>
-
-        <h3 style="margin-bottom: 25px; font-size: 24px">Featured Projects</h3>
-
-        <div class="dash-projects">
-          <div class="dash-card">
-            <h3 style="color: #4fc3f7; margin-bottom: 15px">
-              Customer Segmentation
-            </h3>
-            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
-              Applied K-means clustering on 50K+ customer records. Identified 5
-              key segments leading to 23% increase in marketing ROI.
-            </p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Scikit-learn</span>
-              <span class="tag">Tableau</span>
-            </div>
-          </div>
-
-          <div class="dash-card">
-            <h3 style="color: #4fc3f7; margin-bottom: 15px">
-              Sales Forecasting Model
-            </h3>
-            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
-              Built time-series ARIMA model with 94% prediction accuracy for
-              quarterly revenue forecasting.
-            </p>
-            <div class="tags">
-              <span class="tag">R</span>
-              <span class="tag">Time Series</span>
-              <span class="tag">Statistics</span>
-            </div>
-          </div>
-
-          <div class="dash-card">
-            <h3 style="color: #4fc3f7; margin-bottom: 15px">
-              E-commerce Dashboard
-            </h3>
-            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
-              Interactive Power BI dashboard tracking 15+ KPIs, reducing manual
-              reporting by 80%.
-            </p>
-            <div class="tags">
-              <span class="tag">Power BI</span>
-              <span class="tag">DAX</span>
-              <span class="tag">SQL</span>
-            </div>
-          </div>
-
-          <div class="dash-card">
-            <h3 style="color: #4fc3f7; margin-bottom: 15px">
-              A/B Testing Framework
-            </h3>
-            <p style="color: #aaa; margin-bottom: 20px; line-height: 1.6">
-              Established statistical testing methodology validating product
-              decisions with confidence.
-            </p>
-            <div class="tags">
-              <span class="tag">Hypothesis Testing</span>
-              <span class="tag">Python</span>
-              <span class="tag">Statistical Analysis</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- GRADIENT MODERN -->
-    <div class="page gradient-modern" id="gradient">
-      <nav class="gradient-nav">
-        <div style="font-size: 24px; font-weight: 700">Alex Chen</div>
-        <div style="display: flex; gap: 40px">
-          <a href="#" style="color: #fff; text-decoration: none">Work</a>
-          <a href="#" style="color: #fff; text-decoration: none">About</a>
-          <a href="#" style="color: #fff; text-decoration: none">Contact</a>
-        </div>
-      </nav>
-
-      <div class="gradient-hero-section">
-        <h1>Data Analyst & Storyteller</h1>
-        <p>Transforming numbers into narratives that drive business growth</p>
-      </div>
-
-      <div class="gradient-content">
-        <h2 style="font-size: 42px; margin-bottom: 50px">Featured Projects</h2>
-
-        <div class="gradient-project">
-          <h3 style="font-size: 32px; margin-bottom: 15px; color: #667eea">
-            Customer Segmentation Analysis
-          </h3>
-          <p
-            style="
-              font-size: 18px;
-              line-height: 1.8;
-              color: #ccc;
-              margin-bottom: 20px;
-            "
+  <body class="bg-gradient-to-br from-slate-900 to-slate-800 p-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-8 h-8 text-blue-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            Implemented advanced clustering algorithms to segment 50,000+
-            customers into actionable groups. This analysis drove a 23% increase
-            in marketing ROI and improved customer lifetime value by 18%.
-          </p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">SQL</span>
-          </div>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 2l4 8-4 8-4-8 4-8z"
+            />
+          </svg>
+          <h1 class="text-4xl font-bold text-white">
+            Portfolio Style Explorer
+          </h1>
         </div>
+        <p class="text-slate-300 text-lg">
+          Browse different design personalities for your data analyst portfolio
+        </p>
+      </div>
 
-        <div class="gradient-project">
-          <h3 style="font-size: 32px; margin-bottom: 15px; color: #667eea">
-            Predictive Revenue Forecasting
-          </h3>
-          <p
-            style="
-              font-size: 18px;
-              line-height: 1.8;
-              color: #ccc;
-              margin-bottom: 20px;
-            "
+      <div class="bg-slate-800 rounded-lg p-6 mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <button
+            id="prevBtn"
+            class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg transition-colors"
           >
-            Developed sophisticated time-series models achieving 94% accuracy in
-            quarterly revenue predictions. Enabled proactive resource allocation
-            and strategic planning initiatives.
-          </p>
-          <div class="tags">
-            <span class="tag">R</span>
-            <span class="tag">ARIMA</span>
-            <span class="tag">Statistics</span>
-            <span class="tag">Forecasting</span>
+            &#8592;
+          </button>
+          <div class="text-center">
+            <h2
+              id="portfolioName"
+              class="text-2xl font-bold text-white mb-1"
+            ></h2>
+            <p id="portfolioDesc" class="text-slate-400"></p>
+            <p id="portfolioCounter" class="text-sm text-slate-500 mt-2"></p>
           </div>
-        </div>
-
-        <div class="gradient-project">
-          <h3 style="font-size: 32px; margin-bottom: 15px; color: #667eea">
-            Interactive Analytics Dashboard
-          </h3>
-          <p
-            style="
-              font-size: 18px;
-              line-height: 1.8;
-              color: #ccc;
-              margin-bottom: 20px;
-            "
+          <button
+            id="nextBtn"
+            class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg transition-colors"
           >
-            Built comprehensive Power BI dashboard consolidating multiple data
-            sources. Automated reporting processes and provided executives with
-            real-time insights into business performance.
-          </p>
-          <div class="tags">
-            <span class="tag">Power BI</span>
-            <span class="tag">DAX</span>
-            <span class="tag">Data Modeling</span>
-          </div>
+            &#8594;
+          </button>
         </div>
-      </div>
-    </div>
-
-    <!-- TECH/GITHUB STYLE -->
-    <div class="page tech-modern" id="tech">
-      <div class="tech-header">
-        <h1>alex-chen / data-portfolio</h1>
+        <div
+          id="portfolioContent"
+          class="bg-white rounded-lg overflow-hidden shadow-2xl"
+          style="height: 600px"
+        ></div>
       </div>
 
-      <div class="tech-main">
-        <h2>$ whoami</h2>
-        <p style="font-size: 18px; margin: 20px 0 60px; color: #8b949e">
-          Data Analyst | Python, SQL, R | 5+ years experience transforming data
-          into insights
-        </p>
-
-        <h3 style="font-size: 24px; margin-bottom: 25px; color: #58a6ff">
-          ## Featured Projects
-        </h3>
-
-        <div class="tech-project-card">
-          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
-            customer-segmentation-analysis
-          </h4>
-          <p style="color: #8b949e; margin-bottom: 15px">
-            K-means clustering on 50K+ customer dataset. 23% ROI increase in
-            targeted marketing campaigns.
-          </p>
-          <p style="font-size: 14px; color: #8b949e">
-            <strong>Stack:</strong> Python · Scikit-learn · Pandas · Tableau
-          </p>
-        </div>
-
-        <div class="tech-project-card">
-          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
-            sales-forecasting-model
-          </h4>
-          <p style="color: #8b949e; margin-bottom: 15px">
-            Time-series ARIMA model with 94% accuracy for quarterly revenue
-            predictions.
-          </p>
-          <p style="font-size: 14px; color: #8b949e">
-            <strong>Stack:</strong> R · Time Series Analysis · Statistical
-            Modeling
-          </p>
-        </div>
-
-        <div class="tech-project-card">
-          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
-            ecommerce-analytics-dashboard
-          </h4>
-          <p style="color: #8b949e; margin-bottom: 15px">
-            Real-time dashboard tracking 15+ KPIs. Reduced manual reporting by
-            80%.
-          </p>
-          <p style="font-size: 14px; color: #8b949e">
-            <strong>Stack:</strong> Power BI · SQL · DAX · Data Modeling
-          </p>
-        </div>
-
-        <div class="tech-project-card">
-          <h4 style="font-size: 20px; margin-bottom: 10px; color: #58a6ff">
-            ab-testing-framework
-          </h4>
-          <p style="color: #8b949e; margin-bottom: 15px">
-            Statistical testing methodology for product feature validation and
-            optimization.
-          </p>
-          <p style="font-size: 14px; color: #8b949e">
-            <strong>Stack:</strong> Python · Hypothesis Testing · A/B Testing ·
-            Statistics
-          </p>
-        </div>
-
-        <h3 style="font-size: 24px; margin: 50px 0 25px; color: #58a6ff">
-          ## Technical Skills
-        </h3>
-        <div class="tech-project-card">
-          <p style="color: #c9d1d9; line-height: 2">
-            <strong style="color: #58a6ff">Languages:</strong> Python, R, SQL<br />
-            <strong style="color: #58a6ff">Visualization:</strong> Tableau,
-            Power BI, Matplotlib, Seaborn<br />
-            <strong style="color: #58a6ff">ML/Stats:</strong> Scikit-learn,
-            Statistical Analysis, A/B Testing<br />
-            <strong style="color: #58a6ff">Tools:</strong> Jupyter, Git, Excel,
-            Google Analytics
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROFESSIONAL CORPORATE -->
-    <div class="page corporate" id="corporate">
-      <div class="corp-header">
-        <div style="font-size: 24px; font-weight: 700; color: #1e3a8a">
-          Alex Chen
-        </div>
-        <div style="display: flex; gap: 40px; font-weight: 500">
-          <a href="#" style="color: #333; text-decoration: none">Home</a>
-          <a href="#" style="color: #333; text-decoration: none">Projects</a>
-          <a href="#" style="color: #333; text-decoration: none">About</a>
-          <a href="#" style="color: #333; text-decoration: none">Contact</a>
-        </div>
-      </div>
-
-      <div class="corp-hero">
-        <h1>Data Analyst</h1>
-        <p style="font-size: 22px; margin-top: 15px; opacity: 0.95">
-          Delivering data-driven solutions that accelerate business growth
-        </p>
-      </div>
-
-      <div class="corp-content">
-        <h2 style="font-size: 36px; margin-bottom: 20px; color: #1e3a8a">
-          Professional Experience
-        </h2>
-        <p
-          style="
-            font-size: 18px;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 60px;
-          "
-        >
-          With over 5 years of experience in data analytics, I specialize in
-          transforming complex datasets into actionable insights that drive
-        </p>
-
-        <h2 style="font-size: 36px; margin-bottom: 20px; color: #1e3a8a">
-          Selected Projects
-        </h2>
-        <div class="corp-card">
-          <h3 style="font-size: 24px; margin-bottom: 10px; color: #1e3a8a">
-            Customer Segmentation Analysis
-          </h3>
-          <p style="font-size: 16px; color: #555; line-height: 1.6">
-            Implemented K-means clustering on 50K+ customers to identify
-            actionable segments, increasing targeted marketing ROI by 23%.
-          </p>
-        </div>
-
-        <div class="corp-card">
-          <h3 style="font-size: 24px; margin-bottom: 10px; color: #1e3a8a">
-            Predictive Sales Forecasting
-          </h3>
-          <p style="font-size: 16px; color: #555; line-height: 1.6">
-            Built ARIMA models forecasting quarterly sales with 94% accuracy,
-            enabling better inventory planning and resource allocation.
-          </p>
-        </div>
-
-        <div class="corp-card">
-          <h3 style="font-size: 24px; margin-bottom: 10px; color: #1e3a8a">
-            E-commerce Analytics Dashboard
-          </h3>
-          <p style="font-size: 16px; color: #555; line-height: 1.6">
-            Designed an interactive dashboard tracking 15+ KPIs, automating
-            reports and reducing manual effort by 80%.
-          </p>
-        </div>
-
-        <h2 style="font-size: 36px; margin-bottom: 20px; color: #1e3a8a">
-          Technical Skills
-        </h2>
-        <div class="corp-card">
-          <p style="font-size: 16px; color: #555; line-height: 1.8">
-            <strong>Languages:</strong> Python, R, SQL<br />
-            <strong>Visualization:</strong> Tableau, Power BI, Excel<br />
-            <strong>Techniques:</strong> Machine Learning, Statistical Analysis,
-            A/B Testing, Forecasting<br />
-            <strong>Tools:</strong> Jupyter, Git, ERP Systems
-          </p>
-        </div>
-      </div>
+      <div
+        id="portfolioButtons"
+        class="flex flex-wrap gap-2 justify-center"
+      ></div>
     </div>
 
     <script>
-      function showStyle(styleId) {
-        const pages = document.querySelectorAll(".page");
-        const buttons = document.querySelectorAll(".style-btn");
+      const portfolios = [
+        {
+          name: "Minimalist Terminal",
+          description: "Clean, code-inspired aesthetic",
+          content: `<div class="h-full bg-black text-green-400 font-mono p-8 overflow-auto"><div class="max-w-4xl"><div class="mb-6"><span class="text-green-500">$</span> cat portfolio.txt</div><div class="mb-8"><h1 class="text-3xl mb-2">&gt; Sathyapriya.data_analyst</h1><p class="text-green-300">subbiah.sathyapriya@gmail.com</p></div><div class="mb-6"><div class="text-green-500 mb-2">## ABOUT</div><p class="text-green-300 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div><div class="mb-6"><div class="text-green-500 mb-2">## SKILLS</div><div class="flex flex-wrap gap-2"><span class="border border-green-400 px-3 py-1">Python</span><span class="border border-green-400 px-3 py-1">SQL</span><span class="border border-green-400 px-3 py-1">Excel</span><span class="border border-green-400 px-3 py-1">Tableau</span><span class="border border-green-400 px-3 py-1">PowerBI</span></div></div><div><div class="text-green-500 mb-2">## PROJECTS</div><div class="space-y-2"><div class="border-l-2 border-green-400 pl-4">→ Customer Segmentation Analysis</div><div class="border-l-2 border-green-400 pl-4">→ Smart Budget Assistant</div><div class="border-l-2 border-green-400 pl-4">→ Fashion Trend Analysis</div></div></div><div class="mt-8"><span class="text-green-500 animate-pulse">█</span></div></div></div>`,
+        },
+        {
+          name: "Bold Neon",
+          description: "Vibrant, modern, eye-catching",
+          content: `<div class="h-full bg-slate-950 p-8 overflow-auto relative"><div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-cyan-900/20"></div><div class="relative z-10 max-w-5xl mx-auto"><h1 class="text-7xl font-black mb-4" style="background:linear-gradient(45deg,#ff00ff,#00ffff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 40px rgba(255,0,255,0.5)">Sathyapriya</h1><div class="text-2xl text-cyan-400 mb-12 font-bold">Data Analyst / Exploring Insights</div><div class="grid grid-cols-3 gap-4 mb-12"><div class="bg-gradient-to-br from-purple-600 to-cyan-600 p-6 rounded-lg text-center font-black text-2xl text-white transform hover:scale-105 transition-transform cursor-pointer" style="box-shadow:0 0 30px rgba(139,92,246,0.5)">Data Visualization</div><div class="bg-gradient-to-br from-purple-600 to-cyan-600 p-6 rounded-lg text-center font-black text-2xl text-white transform hover:scale-105 transition-transform cursor-pointer" style="box-shadow:0 0 30px rgba(139,92,246,0.5)">Machine Learning</div><div class="bg-gradient-to-br from-purple-600 to-cyan-600 p-6 rounded-lg text-center font-black text-2xl text-white transform hover:scale-105 transition-transform cursor-pointer" style="box-shadow:0 0 30px rgba(139,92,246,0.5)">Automation</div></div><div class="border-4 border-cyan-400 p-8 rounded-lg mb-8" style="box-shadow:0 0 30px rgba(34,211,238,0.3)"><h2 class="text-3xl font-black text-pink-400 mb-4">Portfolio Highlight</h2><div class="h-32 bg-gradient-to-r from-purple-900 to-cyan-900 rounded"></div><p class="text-cyan-300 mt-4 text-lg">Interactive dashboards and ML-powered insights.</p></div><button class="bg-gradient-to-r from-pink-600 to-cyan-600 text-white font-black text-xl px-12 py-4 rounded-full hover:scale-110 transition-transform" style="box-shadow:0 0 40px rgba(236,72,153,0.6)">View Portfolio</button></div></div>`,
+        },
+        {
+          name: "Elegant Serif",
+          description: "Professional, sophisticated",
+          content: `<div class="h-full bg-slate-50 p-12 overflow-auto"><div class="max-w-4xl mx-auto"><div class="text-center mb-16 border-b-2 border-slate-300 pb-8"><h1 class="text-6xl mb-4 font-serif text-slate-800" style="font-family:Georgia, serif">Sathyapriya Subbiah</h1><p class="text-slate-600 text-sm tracking-widest uppercase">Data Analyst</p></div><div class="prose prose-lg max-w-none mb-16"><p class="text-slate-700 leading-relaxed font-serif text-lg" style="font-family:Georgia, serif">Experienced in analytics, visualization, and machine learning to extract insights from complex data sets.</p></div><div class="grid grid-cols-2 gap-8 mb-16"><div><h3 class="text-2xl font-serif mb-4 text-slate-800" style="font-family:Georgia, serif">Skills</h3><ul class="space-y-2 text-slate-600"><li class="border-l-2 border-slate-400 pl-4">Python</li><li class="border-l-2 border-slate-400 pl-4">SQL</li><li class="border-l-2 border-slate-400 pl-4">Tableau</li></ul></div><div><h3 class="text-2xl font-serif mb-4 text-slate-800" style="font-family:Georgia, serif">Tools</h3><ul class="space-y-2 text-slate-600"><li class="border-l-2 border-slate-400 pl-4">PowerBI</li><li class="border-l-2 border-slate-400 pl-4">Excel</li><li class="border-l-2 border-slate-400 pl-4">Git</li></ul></div></div><div class="border-t-2 border-slate-300 pt-8"><h2 class="text-3xl font-serif mb-6 text-slate-800" style="font-family:Georgia, serif">Portfolio</h2><div class="space-y-6"><div class="bg-white p-6 border border-slate-200 hover:shadow-lg transition-shadow"><h4 class="text-xl font-serif mb-2 text-slate-800">Customer Segmentation</h4><p class="text-slate-600">RFM analysis to target high-value customers.</p></div><div class="bg-white p-6 border border-slate-200 hover:shadow-lg transition-shadow"><h4 class="text-xl font-serif mb-2 text-slate-800">Smart Budget Assistant</h4><p class="text-slate-600">ML-driven personal finance recommendations.</p></div></div></div></div></div>`,
+        },
+        {
+          name: "Playful Geometric",
+          description: "Fun, creative, unique shapes",
+          content: `<div class="h-full bg-amber-50 p-8 overflow-auto relative"><div class="absolute top-10 right-10 w-32 h-32 bg-pink-400 rounded-full opacity-50"></div><div class="absolute bottom-20 left-10 w-24 h-24 bg-blue-400 rotate-45 opacity-50"></div><div class="absolute top-40 left-1/4 w-20 h-20 bg-green-400 opacity-50" style="clip-path:polygon(50% 0%,100% 100%,0% 100%)"></div><div class="relative z-10 max-w-5xl mx-auto"><div class="bg-white p-8 rounded-3xl shadow-xl mb-8 transform -rotate-1"><h1 class="text-6xl font-black text-slate-800 mb-2" style="font-family:Comic Sans MS, cursive">Sathyapriya!</h1><p class="text-2xl text-blue-600 font-bold">Data Analyst & ML Enthusiast</p></div><div class="grid grid-cols-2 gap-6 mb-8"><div class="bg-gradient-to-br from-pink-400 to-pink-500 p-6 rounded-2xl shadow-lg transform rotate-1"><h3 class="text-white font-bold text-2xl mb-3">🎯 Analytics</h3><p class="text-white">Visualizing data creatively.</p></div><div class="bg-gradient-to-br from-blue-400 to-blue-500 p-6 rounded-2xl shadow-lg transform -rotate-1"><h3 class="text-white font-bold text-2xl mb-3">🚀 ML Projects</h3><div class="flex flex-wrap gap-2"><span class="bg-white text-blue-600 px-3 py-1 rounded-full font-bold text-sm">Regression</span><span class="bg-white text-blue-600 px-3 py-1 rounded-full font-bold text-sm">Classification</span><span class="bg-white text-blue-600 px-3 py-1 rounded-full font-bold text-sm">Clustering</span></div></div></div><div class="bg-white p-8 rounded-3xl shadow-xl transform rotate-1"><h2 class="text-4xl font-black text-slate-800 mb-6">Projects 📊</h2><div class="grid grid-cols-3 gap-4"><div class="h-32 bg-gradient-to-br from-green-300 to-green-400 rounded-xl flex items-center justify-center shadow-md transform hover:scale-105 transition-transform cursor-pointer"><span class="text-white font-bold text-lg">Segmentation</span></div><div class="h-32 bg-gradient-to-br from-green-300 to-green-400 rounded-xl flex items-center justify-center shadow-md transform hover:scale-105 transition-transform cursor-pointer"><span class="text-white font-bold text-lg">Budget ML</span></div><div class="h-32 bg-gradient-to-br from-green-300 to-green-400 rounded-xl flex items-center justify-center shadow-md transform hover:scale-105 transition-transform cursor-pointer"><span class="text-white font-bold text-lg">Trend Analysis</span></div></div></div></div></div>`,
+        },
+        {
+          name: "Dark Dashboard",
+          description: "Sleek, data-focused interface",
+          content: `<div class="h-full bg-slate-900 p-6 overflow-auto"><div class="max-w-6xl mx-auto"><div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-700"><div><h1 class="text-3xl font-bold text-white mb-1">Sathyapriya</h1><p class="text-slate-400">Data Analyst</p></div><div class="flex gap-3"><div class="bg-slate-800 px-4 py-2 rounded text-slate-300">● Active</div></div></div><div class="grid grid-cols-4 gap-4 mb-6"><div class="bg-slate-800 p-4 rounded-lg border border-slate-700"><div class="text-3xl font-bold text-blue-400 mb-1">50K+</div><div class="text-slate-400 text-sm">Records</div></div><div class="bg-slate-800 p-4 rounded-lg border border-slate-700"><div class="text-3xl font-bold text-blue-400 mb-1">95%</div><div class="text-slate-400 text-sm">Accuracy</div></div><div class="bg-slate-800 p-4 rounded-lg border border-slate-700"><div class="text-3xl font-bold text-blue-400 mb-1">20</div><div class="text-slate-400 text-sm">Projects</div></div><div class="bg-slate-800 p-4 rounded-lg border border-slate-700"><div class="text-3xl font-bold text-blue-400 mb-1">10</div><div class="text-slate-400 text-sm">Clients</div></div></div></div></div>`,
+        },
+        {
+          name: "Warm Gradient",
+          description: "Friendly, approachable, colorful",
+          content: `<div class="h-full bg-gradient-to-br from-orange-100 via-pink-100 to-purple-100 p-12 overflow-auto"><div class="max-w-5xl mx-auto"><div class="text-center mb-12"><div class="inline-block bg-gradient-to-r from-orange-500 to-pink-500 text-white px-8 py-3 rounded-full mb-6 font-bold">Data Analyst</div><h1 class="text-7xl font-black mb-4 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">Sathyapriya Subbiah</h1><p class="text-xl text-slate-700">Turning data into actionable insights.</p></div><div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-xl mb-8"><p class="text-lg text-slate-700 leading-relaxed">Expert in analytics, visualization, and ML to drive business impact.</p></div><div class="grid grid-cols-3 gap-6 mb-8"><div class="bg-gradient-to-br from-orange-400 to-orange-500 p-6 rounded-2xl shadow-lg text-white text-center transform hover:scale-105 transition-transform cursor-pointer"><div class="text-5xl mb-3">📊</div><h3 class="font-bold text-xl mb-2">Analytics</h3><p class="text-sm opacity-90">Dashboards and insights</p></div><div class="bg-gradient-to-br from-pink-400 to-pink-500 p-6 rounded-2xl shadow-lg text-white text-center transform hover:scale-105 transition-transform cursor-pointer"><div class="text-5xl mb-3">🎯</div><h3 class="font-bold text-xl mb-2">ML Projects</h3><p class="text-sm opacity-90">Predictive models and automation</p></div><div class="bg-gradient-to-br from-purple-400 to-purple-500 p-6 rounded-2xl shadow-lg text-white text-center transform hover:scale-105 transition-transform cursor-pointer"><div class="text-5xl mb-3">💡</div><h3 class="font-bold text-xl mb-2">Consulting</h3><p class="text-sm opacity-90">Data-driven recommendations</p></div></div><div class="text-center"><button class="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white font-bold text-lg px-12 py-4 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all">Explore More</button></div></div></div>`,
+        },
+        {
+          name: "Brutalist Grid",
+          description: "Raw, bold, unconventional",
+          content: `<div class="h-full bg-yellow-300 p-0 overflow-auto"><div class="border-8 border-black h-full"><div class="bg-black text-yellow-300 p-4 border-b-8 border-black"><h1 class="text-5xl font-black uppercase">SATHYAPRIYA</h1></div><div class="grid grid-cols-2" style="grid-auto-rows:minmax(200px,auto)"><div class="border-r-8 border-b-8 border-black p-6 flex flex-col justify-center items-center bg-yellow-200"><h2 class="text-2xl font-bold">Analytics</h2><p class="text-sm">Visualizing insights boldly</p></div><div class="border-b-8 border-black p-6 flex flex-col justify-center items-center bg-yellow-400"><h2 class="text-2xl font-bold">ML Projects</h2><p class="text-sm">Automation & prediction</p></div><div class="border-r-8 border-black p-6 flex flex-col justify-center items-center bg-yellow-100"><h2 class="text-2xl font-bold">Dashboards</h2><p class="text-sm">Interactive and fast</p></div><div class="p-6 flex flex-col justify-center items-center bg-yellow-300"><h2 class="text-2xl font-bold">Portfolio</h2><p class="text-sm">Projects & highlights</p></div></div></div></div>`,
+        },
+        {
+          name: "Glassmorphism",
+          description: "Soft, modern, transparent layers",
+          content: `<div class="h-full bg-gradient-to-br from-slate-200 via-white to-slate-100 p-12 overflow-auto"><div class="max-w-5xl mx-auto"><div class="text-center mb-12"><h1 class="text-7xl font-black mb-4 text-slate-800">Sathyapriya Subbiah</h1><p class="text-xl text-slate-600">Data Analyst & ML Enthusiast</p></div><div class="grid grid-cols-3 gap-8 mb-12"><div class="bg-white/30 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow cursor-pointer"><h3 class="text-2xl font-bold text-slate-800 mb-2">Analytics</h3><p class="text-slate-700">Interactive dashboards & insights</p></div><div class="bg-white/30 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow cursor-pointer"><h3 class="text-2xl font-bold text-slate-800 mb-2">ML Projects</h3><p class="text-slate-700">Predictive modeling & automation</p></div><div class="bg-white/30 backdrop-blur-lg rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow cursor-pointer"><h3 class="text-2xl font-bold text-slate-800 mb-2">Visualization</h3><p class="text-slate-700">Insights made clear & actionable</p></div></div><div class="text-center"><button class="bg-white/50 backdrop-blur-md px-12 py-4 rounded-full text-lg font-bold text-slate-800 hover:scale-105 transition-transform shadow-md">See Projects</button></div></div></div>`,
+        },
+      ];
 
-        pages.forEach((page) => {
-          page.classList.remove("active");
-        });
-        buttons.forEach((btn) => btn.classList.remove("active"));
+      let current = 0;
 
-        document.getElementById(styleId).classList.add("active");
-        event.currentTarget.classList.add("active");
+      const portfolioName = document.getElementById("portfolioName");
+      const portfolioDesc = document.getElementById("portfolioDesc");
+      const portfolioCounter = document.getElementById("portfolioCounter");
+      const portfolioContent = document.getElementById("portfolioContent");
+      const portfolioButtons = document.getElementById("portfolioButtons");
+
+      function renderPortfolio(index) {
+        current = index;
+        const p = portfolios[current];
+        portfolioName.textContent = p.name;
+        portfolioDesc.textContent = p.description;
+        portfolioCounter.textContent = `${current + 1} of ${portfolios.length}`;
+        portfolioContent.innerHTML = p.content;
+        portfolioButtons.innerHTML = portfolios
+          .map(
+            (pf, i) =>
+              `<button onclick="renderPortfolio(${i})" class="px-4 py-2 rounded-lg transition-all ${i === current ? "bg-blue-600 text-white" : "bg-slate-700 text-slate-300 hover:bg-slate-600"}">${pf.name}</button>`
+          )
+          .join("");
       }
+
+      document
+        .getElementById("nextBtn")
+        .addEventListener("click", () =>
+          renderPortfolio((current + 1) % portfolios.length)
+        );
+      document
+        .getElementById("prevBtn")
+        .addEventListener("click", () =>
+          renderPortfolio((current - 1 + portfolios.length) % portfolios.length)
+        );
+
+      renderPortfolio(0);
     </script>
   </body>
 </html>
