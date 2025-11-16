@@ -36,23 +36,23 @@ export default function DataPortfolio() {
   ];
 
   const coreStrengths = [
-    { 
-      icon: Target, 
+    {
+      icon: Target,
       title: "Business Impact Focus",
       desc: "Consistently deliver measurable results: 75% efficiency gains, 99.99% accuracy standards"
     },
-    { 
-      icon: Database, 
+    {
+      icon: Database,
       title: "Technical Versatility",
       desc: "Full-stack analytics: SQL, Python, Tableau, Machine Learning, Geospatial Intelligence"
     },
-    { 
-      icon: Zap, 
+    {
+      icon: Zap,
       title: "End-to-End Execution",
       desc: "From data collection to dashboard delivery - proven ability to own complete analytics workflows"
     },
-    { 
-      icon: Award, 
+    {
+      icon: Award,
       title: "Academic Excellence",
       desc: "9.26/10 CGPA, NTU Advanced Analytics certified, published researcher with strong fundamentals"
     }
@@ -197,7 +197,7 @@ export default function DataPortfolio() {
                   <h3 className="text-sm font-semibold text-slate-500 mb-4">KEY PERFORMANCE METRICS</h3>
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     {keyMetrics.map((metric, idx) => (
-                      <div 
+                      <div
                         key={idx}
                         className={`text-center p-4 rounded-xl transition-all cursor-pointer ${activeMetric === idx ? 'bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 scale-105' : 'bg-slate-50 dark:bg-slate-700/50'}`}
                         onMouseEnter={() => setActiveMetric(idx)}
@@ -454,145 +454,178 @@ export default function DataPortfolio() {
           </div>
         </section>
 
-        {/* Research & Publications Section gradient*/}
+        {/* Research & Publications Section - Timeline Style */}
         <section className="px-6 py-16 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-900">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">Research & Publications</h2>
               <p className={secondaryText}>Contributing to academic discourse in AI and machine learning</p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Conference Paper 1 */}
-              <div className={`${cardBg} rounded-2xl border ${borderColor} overflow-hidden hover:shadow-2xl transition-all group`}>
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-bold">Intelligent Video Surveillance System for Banking Security using YOLOv3 & Darknet</h3>
-                    <ExternalLink size={20} className="flex-shrink-0 ml-2 opacity-80 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <div className="flex items-center gap-3 text-sm opacity-90">
-                    <span className="font-semibold">ICSIE 2024 Conference</span>
-                    <span>•</span>
-                    <span>April 2024</span>
+            {/* Conference Papers */}
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <Award size={24} className="text-purple-600" />
+                <h3 className="text-2xl font-bold">Conference Publications</h3>
+              </div>
+              
+              <div className="space-y-6">
+                {/* Conference Paper 1 */}
+                <div className={`${cardBg} rounded-xl border-l-4 border-purple-600 shadow-lg hover:shadow-xl transition-all`}>
+                  <div className="p-6">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold mb-2">Intelligent Video Surveillance System for Banking Security using YOLOv3 & Darknet</h4>
+                        <div className="flex flex-wrap items-center gap-3 text-sm mb-3">
+                          <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-full font-semibold">ICSIE 2024 Conference</span>
+                          <span className={secondaryText}>April 2024</span>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <span className="px-3 py-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full font-semibold">✓ Presented</span>
+                        <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Journal Submitted</span>
+                      </div>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <div className="text-xs font-semibold text-purple-600 mb-2">RESEARCH FOCUS</div>
+                        <p className={`text-sm ${secondaryText} mb-3`}>
+                          Developed intelligent surveillance system addressing attention fatigue in banking security. Achieved 0.76 mAP with 30+ FPS real-time processing.
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Computer Vision</span>
+                          <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Deep Learning</span>
+                          <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">YOLOv3</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-xs font-semibold text-purple-600 mb-2">KEY FINDINGS</div>
+                        <ul className={`text-sm ${secondaryText} space-y-1.5`}>
+                          <li className="flex items-start gap-2">
+                            <span className="text-purple-600 mt-0.5">▸</span>
+                            <span>Human detection accuracy drops to 45% after 20 minutes</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-purple-600 mt-0.5">▸</span>
+                            <span>YOLOv3 outperformed two-stage detectors in speed</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-purple-600 mt-0.5">▸</span>
+                            <span>System enables 24/7 consistent monitoring</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="mb-4">
-                    <div className="text-xs font-semibold text-slate-500 mb-2">RESEARCH FOCUS</div>
-                    <p className={`text-sm ${secondaryText}`}>
-                      Developed intelligent surveillance system addressing attention fatigue in banking security. Achieved 0.76 mAP with 30+ FPS real-time processing.
-                    </p>
-                  </div>
-                  <div className="mb-4">
-                    <div className="text-xs font-semibold text-slate-500 mb-2">KEY FINDINGS</div>
-                    <ul className={`text-sm ${secondaryText} space-y-1`}>
-                      <li>• Human detection accuracy drops to 45% after 20 minutes</li>
-                      <li>• YOLOv3 outperformed two-stage detectors in speed</li>
-                      <li>• System enables 24/7 consistent monitoring</li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Computer Vision</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Deep Learning</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">YOLOv3</span>
-                  </div>
-                  <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-                    <div className="text-xs text-green-600 dark:text-green-400 font-semibold">✓ Presented at conference • Submitted for journal publication</div>
+
+                {/* Conference Paper 2 */}
+                <div className={`${cardBg} rounded-xl border-l-4 border-purple-600 shadow-lg hover:shadow-xl transition-all`}>
+                  <div className="p-6">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold mb-2">Personalized Budget Optimization System using Machine Learning</h4>
+                        <div className="flex flex-wrap items-center gap-3 text-sm mb-3">
+                          <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-full font-semibold">ICCET 2024 Conference</span>
+                          <span className={secondaryText}>March 2024</span>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <span className="px-3 py-1 text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full font-semibold">✓ Presented</span>
+                      </div>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <div className="text-xs font-semibold text-purple-600 mb-2">RESEARCH FOCUS</div>
+                        <p className={`text-sm ${secondaryText} mb-3`}>
+                          ML-based financial management system using Decision Trees to provide personalized budget recommendations across 8 expense categories.
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Machine Learning</span>
+                          <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Decision Trees</span>
+                          <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">FinTech</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-xs font-semibold text-purple-600 mb-2">KEY CONTRIBUTIONS</div>
+                        <ul className={`text-sm ${secondaryText} space-y-1.5`}>
+                          <li className="flex items-start gap-2">
+                            <span className="text-purple-600 mt-0.5">▸</span>
+                            <span>Trained on 202 real users' expenditure data</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-purple-600 mt-0.5">▸</span>
+                            <span>Decision Tree Regressor with R² evaluation</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-purple-600 mt-0.5">▸</span>
+                            <span>Streamlit interface for real-time predictions</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Conference Paper 2 */}
-              <div className={`${cardBg} rounded-2xl border ${borderColor} overflow-hidden hover:shadow-2xl transition-all group`}>
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-bold">Personalized Budget Optimization System using Machine Learning</h3>
-                    <ExternalLink size={20} className="flex-shrink-0 ml-2 opacity-80 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <div className="flex items-center gap-3 text-sm opacity-90">
-                    <span className="font-semibold">ICCET 2024 Conference</span>
-                    <span>•</span>
-                    <span>March 2024</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="mb-4">
-                    <div className="text-xs font-semibold text-slate-500 mb-2">RESEARCH FOCUS</div>
-                    <p className={`text-sm ${secondaryText}`}>
-                      ML-based financial management system using Decision Trees to provide personalized budget recommendations across 8 expense categories.
-                    </p>
-                  </div>
-                  <div className="mb-4">
-                    <div className="text-xs font-semibold text-slate-500 mb-2">KEY CONTRIBUTIONS</div>
-                    <ul className={`text-sm ${secondaryText} space-y-1`}>
-                      <li>• Trained on 202 real users' expenditure data</li>
-                      <li>• Decision Tree Regressor with R² evaluation</li>
-                      <li>• Streamlit interface for real-time predictions</li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Machine Learning</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Decision Trees</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">FinTech</span>
-                  </div>
-                  <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-                    <div className="text-xs text-green-600 dark:text-green-400 font-semibold">✓ Conference presented • Democratized financial planning</div>
-                  </div>
-                </div>
+            {/* Academic Seminars */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <Code2 size={24} className="text-blue-600" />
+                <h3 className="text-2xl font-bold">Academic Seminars</h3>
               </div>
-
-              {/* Seminar 1 */}
-              <div className={`${cardBg} rounded-2xl border ${borderColor} overflow-hidden hover:shadow-2xl transition-all group`}>
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-bold">Blue Brain Project: Computational Neuroscience & Brain Simulation Technology</h3>
-                    <ExternalLink size={20} className="flex-shrink-0 ml-2 opacity-80 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Seminar 1 */}
+                <div className={`${cardBg} rounded-xl border ${borderColor} shadow-md hover:shadow-lg transition-all p-6`}>
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <TrendingUp size={20} className="text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold mb-1">Blue Brain Project</h4>
+                      <p className="text-sm text-blue-600">Computational Neuroscience & Brain Simulation</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3 text-sm opacity-90">
-                    <span className="font-semibold">Academic Seminar II</span>
-                    <span>•</span>
-                    <span>Semester 6</span>
+                  <div className="flex items-center gap-2 mb-3 text-xs">
+                    <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded">Academic Seminar II</span>
+                    <span className={secondaryText}>Semester 6</span>
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="mb-4">
-                    <div className="text-xs font-semibold text-slate-500 mb-2">RESEARCH TOPICS</div>
-                    <p className={`text-sm ${secondaryText}`}>
-                      Explored brain simulation technologies, neural networks, and nanobots for data acquisition in creating biologically detailed digital reconstructions of the mammalian brain.
-                    </p>
-                  </div>
+                  <p className={`text-sm ${secondaryText} mb-3`}>
+                    Explored brain simulation technologies, neural networks, and nanobots for data acquisition in creating biologically detailed digital reconstructions.
+                  </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Neuroscience</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Neural Networks</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Brain Simulation</span>
+                    <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Neuroscience</span>
+                    <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Neural Networks</span>
+                    <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Brain Simulation</span>
                   </div>
                 </div>
-              </div>
 
-              {/* Seminar 2 */}
-              <div className={`${cardBg} rounded-2xl border ${borderColor} overflow-hidden hover:shadow-2xl transition-all group`}>
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-bold">Generative AI in Visual Arts: GANs, Neural Style Transfer & Creative Applications</h3>
-                    <ExternalLink size={20} className="flex-shrink-0 ml-2 opacity-80 group-hover:opacity-100 transition-opacity" />
+                {/* Seminar 2 */}
+                <div className={`${cardBg} rounded-xl border ${borderColor} shadow-md hover:shadow-lg transition-all p-6`}>
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Zap size={20} className="text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold mb-1">Generative AI in Visual Arts</h4>
+                      <p className="text-sm text-blue-600">GANs, Neural Style Transfer & Creative AI</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3 text-sm opacity-90">
-                    <span className="font-semibold">Academic Seminar I</span>
-                    <span>•</span>
-                    <span>Semester 5</span>
+                  <div className="flex items-center gap-2 mb-3 text-xs">
+                    <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded">Academic Seminar I</span>
+                    <span className={secondaryText}>Semester 5</span>
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="mb-4">
-                    <div className="text-xs font-semibold text-slate-500 mb-2">RESEARCH TOPICS</div>
-                    <p className={`text-sm ${secondaryText}`}>
-                      Investigated Generative Adversarial Networks (GANs), neural style transfer, DALL-E 2, and AI's transformative role in art creation and analysis.
-                    </p>
-                  </div>
+                  <p className={`text-sm ${secondaryText} mb-3`}>
+                    Investigated Generative Adversarial Networks (GANs), neural style transfer, DALL-E 2, and AI's transformative role in art creation and analysis.
+                  </p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">GANs</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">Generative AI</span>
-                    <span className="px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full font-semibold">DALL-E</span>
+                    <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">GANs</span>
+                    <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">Generative AI</span>
+                    <span className="text-xs px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded">DALL-E</span>
                   </div>
                 </div>
               </div>
@@ -601,7 +634,7 @@ export default function DataPortfolio() {
         </section>
 
         {/* Skills Visualization */}
-        <section className="px-6 py-16 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-900">
+        <section className="px-6 py-16">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">Technical Proficiency</h2>
@@ -617,7 +650,7 @@ export default function DataPortfolio() {
                       <span className="text-blue-600 font-bold">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-3 overflow-hidden">
-                      <div 
+                      <div
                         className="bg-gradient-to-r from-blue-600 to-purple-600 h-3 rounded-full transition-all duration-1000 ease-out"
                         style={{ width: `${skill.level}%` }}
                       ></div>
