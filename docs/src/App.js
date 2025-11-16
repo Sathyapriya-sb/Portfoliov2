@@ -6,13 +6,6 @@ export default function DataPortfolio() {
   const [darkMode, setDarkMode] = useState(false);
   const [activeMetric, setActiveMetric] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveMetric((prev) => (prev + 1) % 3);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   const projectsData = [
     { name: 'ERP 2.0', completion: 100 },
     { name: 'HR Analytics', completion: 100 },
@@ -31,7 +24,7 @@ export default function DataPortfolio() {
 
   const keyMetrics = [
     { label: "Projects Completed", value: "12+", sublabel: "End-to-End Analytics", color: "#3b82f6" },
-    { label: "Academic CGPA", value: "9.26", sublabel: "Top 5% of Class", color: "#10b981" },
+    { label: "Academic CGPA", value: "9.26", sublabel: "First Class Distinction", color: "#10b981" },
     { label: "Research Papers", value: "2", sublabel: "Conference Presented", color: "#8b5cf6" }
   ];
 
@@ -235,14 +228,14 @@ export default function DataPortfolio() {
                         <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-3">
                           <div className="bg-gradient-to-r from-green-600 to-emerald-600 h-3 rounded-full" style={{ width: '92.6%' }}></div>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 mt-4">
+                        <div className="grid grid-cols-[3fr_2fr] gap-3 mt-4">
                           <div className="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-green-600">O</div>
-                            <div className="text-xs text-slate-600 dark:text-slate-400">Outstanding Grades</div>
+                            <div className="text-xl font-bold text-green-600">NTU Certification</div>
+                            <div className="text-xs text-slate-600 dark:text-slate-400">Advanced Professional Certificate in Data Analytics</div>
                           </div>
                           <div className="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                            <div className="text-xl font-bold text-green-600">Top 5%</div>
-                            <div className="text-xs text-slate-600 dark:text-slate-400">Class Ranking</div>
+                            <div className="text-xl font-bold text-green-600">First Class</div>
+                            <div className="text-xs text-slate-600 dark:text-slate-400">With Distinction</div>
                           </div>
                         </div>
                         <div className="text-xs text-slate-500 mt-2">
@@ -391,6 +384,134 @@ export default function DataPortfolio() {
                       <p className="text-sm text-slate-600 dark:text-slate-400">
                         — Tatsuya Higuchi, Project Manager
                       </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Education & Certifications */}
+        <section className="px-6 py-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">Education & Certifications</h2>
+              <p className={secondaryText}>Academic foundation built on excellence and continuous learning</p>
+            </div>
+            
+            <div className="space-y-6">
+              {/* B.Tech Degree */}
+              <div className={`${cardBg} rounded-xl border ${borderColor} shadow-md hover:shadow-lg transition-all`}>
+                <div className="p-6">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Award size={24} className="text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-xs font-semibold text-blue-600 mb-1">UNDERGRADUATE DEGREE</div>
+                      <h4 className="text-xl font-bold mb-1">Bachelor of Technology in Information Technology</h4>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 mb-1">SRM Institute of Science and Technology (SRMIST)</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-500">Kattankulathur, Chennai, Tamil Nadu, India</p>
+                    </div>
+                    <div className="bg-slate-100 dark:bg-slate-700 px-4 py-2 rounded-lg text-center">
+                      <div className="text-sm font-semibold">2020 - 2024</div>
+                      <div className="text-xs text-slate-500">4 Years</div>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <div className="text-sm font-semibold text-slate-500 mb-3">KEY SUBJECTS (Outstanding Grades)</div>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg text-sm font-semibold">Artificial Intelligence</span>
+                      <span className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg text-sm font-semibold">Database Management Systems</span>
+                      <span className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg text-sm font-semibold">Compiler Design</span>
+                      <span className="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg text-sm font-semibold">Data Structures & Algorithms</span>
+                    </div>
+                  </div>
+                  
+                  <div className={`p-4 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-blue-900/20 rounded-xl border-l-4 border-blue-600`}>
+                    <div className="flex items-start gap-3">
+                      <Award size={20} className="text-blue-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-semibold text-sm mb-1">Academic Highlights</div>
+                        <p className={`text-sm ${secondaryText}`}>
+                          Graduated with First Class Distinction, maintaining consistent excellence throughout the program with Outstanding grades in core IT subjects including AI, DBMS, and Data Structures.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Certifications */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* NTU Certificate */}
+                <div className={`${cardBg} rounded-xl border ${borderColor} shadow-md hover:shadow-lg transition-all`}>
+                  <div className="p-6">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Award size={24} className="text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-xs font-semibold text-green-600 mb-1">PROFESSIONAL CERTIFICATION</div>
+                        <h4 className="text-lg font-bold mb-1">Advanced Analytics Certificate</h4>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">Nanyang Technological University (NTU)</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-4 text-sm">
+                      <Calendar size={16} className="text-slate-500" />
+                      <span className={secondaryText}>April 2024 - August 2024</span>
+                    </div>
+                    
+                    <div className={`p-3 bg-green-50 dark:bg-green-900/20 rounded-lg`}>
+                      <p className={`text-sm ${secondaryText}`}>
+                        Completed advanced training in analytics methodologies, statistical modeling, and data-driven decision making from Singapore's premier research university.
+                      </p>
+                    </div>
+                    
+                    <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                      <div className="flex items-center gap-2 text-xs text-green-600 dark:text-green-400 font-semibold">
+                        <Check size={14} />
+                        <span>Completed in Singapore</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* NPTEL Certificate */}
+                <div className={`${cardBg} rounded-xl border ${borderColor} shadow-md hover:shadow-lg transition-all`}>
+                  <div className="p-6">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-yellow-600 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Award size={24} className="text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-xs font-semibold text-yellow-600 mb-1">NATIONAL CERTIFICATION</div>
+                        <h4 className="text-lg font-bold mb-1">Python Programming</h4>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">NPTEL (IIT/IISc Initiative)</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-4 text-sm">
+                      <Calendar size={16} className="text-slate-500" />
+                      <span className={secondaryText}>January 2023 - April 2023</span>
+                    </div>
+                    
+                    <div className={`p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg mb-3`}>
+                      <p className={`text-sm ${secondaryText}`}>
+                        Earned Silver Medal certification in Python programming, demonstrating proficiency in core programming concepts and practical application.
+                      </p>
+                    </div>
+                    
+                    <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                      <div className="flex items-center gap-2">
+                        <div className="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-full text-xs font-semibold flex items-center gap-1">
+                          <Award size={12} />
+                          Silver Medal
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
